@@ -55,8 +55,9 @@ a { color: inherit; text-decoration: none; }
 .nav-label { margin: 0 var(--space-3) var(--space-3); color: var(--color-ink-faint); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .nav-item { display: flex; align-items: center; gap: var(--space-3); min-height: 2.7rem; padding: 0 var(--space-3); border-radius: var(--radius-md); color: var(--color-ink-muted); font-size: 0.84rem; font-weight: 550; }
 .nav-arrow { margin-left: auto; font-size: 1.1rem; }
-.nav-item:hover { color: var(--color-ink); }
+.nav-item:hover { color: var(--color-ink); background: color-mix(in srgb, var(--color-surface-muted), transparent 45%); }
 .nav-item--active { color: var(--color-ink); background: var(--color-surface-muted); }
+.nav-item:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--border-focus); }
 .nav-item__chevron { margin-left: auto; }
 .sidebar__note { display: flex; gap: var(--space-3); padding: var(--space-4); border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: var(--color-surface); }
 .sidebar__note-icon { flex: 0 0 auto; display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; color: var(--color-violet); background: var(--color-violet-soft); }
@@ -131,11 +132,16 @@ a { color: inherit; text-decoration: none; }
 .color-ramp__intro h3 { margin: 0 0 var(--space-2); font-size: 0.95rem; }
 .color-ramp__intro p { margin: 0; color: var(--color-ink-muted); font-size: 0.75rem; line-height: 1.55; }
 .color-ramp__tokens { display: grid; grid-template-columns: repeat(11, minmax(2.5rem, 1fr)); gap: var(--spacing-6); }
-.color-chip { min-width: 0; }
-.color-chip__sample { display: block; aspect-ratio: 1; margin-bottom: var(--spacing-8); border: 1px solid color-mix(in srgb, var(--text-primary), transparent 90%); border-radius: var(--radius-default); }
+.color-chip { min-width: 0; width: 100%; padding: 0; border: 0; border-radius: var(--radius-default); color: inherit; background: transparent; font: inherit; text-align: left; cursor: pointer; }
+.color-chip__sample { display: block; aspect-ratio: 1; margin-bottom: var(--spacing-8); border: 1px solid color-mix(in srgb, var(--text-primary), transparent 90%); border-radius: var(--radius-default); transition: transform 150ms ease, box-shadow 150ms ease; }
+.color-chip:hover .color-chip__sample { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.color-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--background-secondary), var(--focus-ring); }
+.color-chip--copied .color-chip__sample { box-shadow: 0 0 0 2px var(--feedback-success); }
 .color-chip strong, .color-chip code { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .color-chip strong { font-size: var(--font-size-xs); }
-.color-chip code { margin-top: var(--spacing-2); color: var(--color-ink-faint); font-size: 0.56rem; }
+.color-chip code { min-height: 1em; margin-top: var(--spacing-2); color: var(--color-ink-faint); font-size: 0.56rem; }
+.color-chip--copied code { color: var(--feedback-success); font-weight: var(--font-weight-semibold); }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
 
 .semantic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
 .semantic-group { padding: var(--space-5); border: 1px solid var(--color-line); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-sm); }

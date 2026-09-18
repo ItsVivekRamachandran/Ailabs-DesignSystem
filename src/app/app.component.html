@@ -26,11 +26,11 @@
   <aside class="sidebar">
     <nav aria-label="Documentation">
       <p class="nav-label">Explore</p>
-      <a class="nav-item nav-item--active" href="#overview"><svg><use href="#icon-sparkles"></use></svg><span>Overview</span><span class="nav-arrow">›</span></a>
-      <a class="nav-item" href="#foundations"><svg><use href="#icon-layers"></use></svg><span>Foundations</span></a>
-      <a class="nav-item" href="#colors"><svg><use href="#icon-palette"></use></svg><span>Colors</span></a>
-      <a class="nav-item" href="#variables"><svg><use href="#icon-type"></use></svg><span>Variables</span></a>
-      <a class="nav-item" href="#components"><svg><use href="#icon-component"></use></svg><span>Components</span></a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'overview'" [attr.aria-current]="activeSection() === 'overview' ? 'page' : null" href="#overview" (click)="selectSection('overview', $event)"><svg><use href="#icon-sparkles"></use></svg><span>Overview</span>@if (activeSection() === 'overview') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'foundations'" [attr.aria-current]="activeSection() === 'foundations' ? 'page' : null" href="#foundations" (click)="selectSection('foundations', $event)"><svg><use href="#icon-layers"></use></svg><span>Foundations</span>@if (activeSection() === 'foundations') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'colors'" [attr.aria-current]="activeSection() === 'colors' ? 'page' : null" href="#colors" (click)="selectSection('colors', $event)"><svg><use href="#icon-palette"></use></svg><span>Colors</span>@if (activeSection() === 'colors') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'variables'" [attr.aria-current]="activeSection() === 'variables' ? 'page' : null" href="#variables" (click)="selectSection('variables', $event)"><svg><use href="#icon-type"></use></svg><span>Variables</span>@if (activeSection() === 'variables') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'components'" [attr.aria-current]="activeSection() === 'components' ? 'page' : null" href="#components" (click)="selectSection('components', $event)"><svg><use href="#icon-component"></use></svg><span>Components</span>@if (activeSection() === 'components') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
     </nav>
     <div class="sidebar__note"><span class="sidebar__note-icon"><svg><use href="#icon-sparkles"></use></svg></span><p><strong>Built for AI.</strong><br />Calm interfaces for complex intelligence.</p></div>
   </aside>
@@ -41,7 +41,7 @@
       <h1>Interfaces for<br /><em>intelligent things.</em></h1>
       <p class="hero__lede">A flexible design language for products that think, learn, and collaborate with people.</p>
       <div class="hero__actions">
-        <button dsButton size="lg"><svg><use href="#icon-box"></use></svg>Browse components</button>
+        <button dsButton size="lg" (click)="selectSection('components')"><svg><use href="#icon-box"></use></svg>Browse components</button>
         <button dsButton variant="secondary" size="lg"><svg><use href="#icon-github"></use></svg>View on GitHub</button>
       </div>
       <div class="install-command">
@@ -63,15 +63,16 @@
         <p>Exact values from the Figma Primitives collection. Product UI should consume the semantic aliases below.</p>
       </div>
       <div class="color-ramps">
+        <p class="sr-only" aria-live="polite">@if (copiedColorKey()) { Color value copied to clipboard. }</p>
         @for (ramp of colorRamps; track ramp.name) {
           <article class="color-ramp">
             <div class="color-ramp__intro"><h3>{{ ramp.name }}</h3><p>{{ ramp.description }}</p></div>
             <div class="color-ramp__tokens">
               @for (token of ramp.tokens; track token.name) {
-                <div class="color-chip">
+                <button class="color-chip" type="button" [class.color-chip--copied]="copiedColorKey() === ramp.name + '-' + token.name" [attr.aria-label]="'Copy ' + ramp.name + ' ' + token.name + ' color ' + token.value" (click)="copyColor(token.value, ramp.name + '-' + token.name)">
                   <span class="color-chip__sample" [style.background]="token.value"></span>
-                  <strong>{{ token.name }}</strong><code>{{ token.value }}</code>
-                </div>
+                  <strong>{{ token.name }}</strong><code>{{ copiedColorKey() === ramp.name + '-' + token.name ? 'Copied!' : token.value }}</code>
+                </button>
               }
             </div>
           </article>
