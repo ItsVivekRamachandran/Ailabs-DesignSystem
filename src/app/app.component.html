@@ -100,21 +100,57 @@
           </article>
         }
       </div>
-      <div class="variable-scales">
-        <article>
-          <p class="section-kicker">Spacing</p><h3>23-step spatial scale</h3>
-          <div class="spacing-scale">
-            @for (value of spacing; track value) { <span [style.width.px]="value || 2" [title]="value + 'px'"></span> }
-          </div>
-          <code>0 · 1 · 2 · 3 · 4 · 6 · 8 · 10 · 11 · 12 · 14 · 16 · 20 · 24 · 32 · 40 · 48 · 56 · 64 · 80 · 96 · 120 · 160</code>
-        </article>
-        <article>
-          <p class="section-kicker">Radius</p><h3>13 shape variables</h3>
-          <div class="radius-scale">
-            @for (radius of radiusTokens; track radius.name) {
-              <span [style.border-radius.px]="radius.value > 100 ? 9999 : radius.value"><i>{{ radius.name }}</i></span>
+      <div class="foundation-guidance" aria-label="How to use foundation variables">
+        <article><span>01</span><div><strong>Start with the common scale.</strong><p>Choose the smallest token that creates clear separation. Consistent rhythm matters more than isolated perfection.</p></div></article>
+        <article><span>02</span><div><strong>Match shape to hierarchy.</strong><p>Small radii feel precise; larger radii signal containers, overlays, and friendly interactive surfaces.</p></div></article>
+        <article><span>03</span><div><strong>Use stroke to show state.</strong><p>Thin borders define structure. Increase weight only for focus, selection, or intentional emphasis.</p></div></article>
+      </div>
+
+      <div class="variable-docs">
+        <article class="token-doc token-doc--spacing">
+          <header class="token-doc__header"><div><p class="section-kicker">Spacing</p><h3>Build a predictable layout rhythm</h3><p>The 23-step scale covers precise optical adjustments through large page sections. Use the compact range for components and the layout range sparingly.</p></div><span class="token-count">23 tokens</span></header>
+          <div class="spacing-groups">
+            @for (group of spacingGroups; track group.name) {
+              <section class="spacing-group">
+                <header><div><strong>{{ group.name }}</strong><span>{{ group.range }}</span></div><p>{{ group.description }}</p></header>
+                <div class="spacing-token-list">
+                  @for (token of group.values; track token.value) {
+                    <div class="spacing-token">
+                      <code>--spacing-{{ token.value }}</code>
+                      <span class="spacing-token__track" aria-hidden="true"><i [style.width.%]="token.preview"></i></span>
+                      <strong>{{ token.value }}px</strong>
+                    </div>
+                  }
+                </div>
+              </section>
             }
           </div>
+          <aside class="token-note"><strong>Recommended default</strong><span>Start with <code>--spacing-8</code>, <code>--spacing-16</code>, and <code>--spacing-24</code> for most component layouts.</span></aside>
+        </article>
+
+        <article class="token-doc">
+          <header class="token-doc__header"><div><p class="section-kicker">Radius</p><h3>Shape communicates hierarchy</h3><p>Apply smaller corners to compact controls and larger corners to cards or prominent surfaces. Pill and full are reserved for capsules and circles.</p></div><span class="token-count">13 tokens</span></header>
+          <div class="radius-reference">
+            @for (radius of radiusTokens; track radius.name) {
+              <div class="radius-token">
+                <span class="radius-token__sample" [style.border-radius.px]="radius.value > 100 ? 9999 : radius.value" aria-hidden="true"></span>
+                <div><code>--radius-{{ radius.name }}</code><strong>{{ radius.value }}px</strong><small>{{ radius.usage }}</small></div>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="token-doc">
+          <header class="token-doc__header"><div><p class="section-kicker">Stroke</p><h3>Control edge and emphasis</h3><p>Stroke width helps distinguish quiet structure from interactive state. Pair these widths with semantic border colors instead of hardcoded values.</p></div><span class="token-count">8 tokens</span></header>
+          <div class="stroke-reference">
+            @for (stroke of strokeTokens; track stroke.name) {
+              <div class="stroke-token">
+                <span class="stroke-token__sample" aria-hidden="true"><i [style.height.px]="stroke.value || 1" [class.stroke-token__line--none]="stroke.value === 0"></i></span>
+                <div><code>--stroke-width-{{ stroke.name }}</code><strong>{{ stroke.value }}px</strong><small>{{ stroke.usage }}</small></div>
+              </div>
+            }
+          </div>
+          <aside class="token-note"><strong>Color pairing</strong><span>Use <code>--border-default</code> for structure, <code>--border-focus</code> for keyboard focus, and <code>--border-error</code> for validation.</span></aside>
         </article>
       </div>
     </section>

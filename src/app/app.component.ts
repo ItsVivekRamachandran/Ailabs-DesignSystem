@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, signal } from '@angular/core'
-import { colorRamps, radii, semanticColorGroups, spacing } from '../design-system/tokens'
+import { colorRamps, radii, semanticColorGroups, spacing, strokes } from '../design-system/tokens'
 import {
   BadgeComponent,
   ButtonComponent,
@@ -49,8 +49,34 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   readonly activeSection = signal('overview')
   readonly colorRamps = colorRamps
   readonly semanticColorGroups = semanticColorGroups
-  readonly spacing = spacing
-  readonly radiusTokens = Object.entries(radii).map(([name, value]) => ({ name, value }))
+  readonly spacingGroups = [
+    { name: 'Micro', range: '0–4px', description: 'Optical adjustments, icon gaps, and hairline offsets.', values: spacing.filter((value) => value <= 4) },
+    { name: 'Compact', range: '6–16px', description: 'Dense controls, inline gaps, and internal padding.', values: spacing.filter((value) => value >= 6 && value <= 16) },
+    { name: 'Component', range: '20–64px', description: 'Cards, sections, component groups, and page gutters.', values: spacing.filter((value) => value >= 20 && value <= 64) },
+    { name: 'Layout', range: '80–160px', description: 'Large sections, hero spacing, and major page rhythm.', values: spacing.filter((value) => value >= 80) },
+  ].map((group) => ({
+    ...group,
+    values: group.values.map((value) => ({ value, preview: value === 0 ? 0 : Math.min(100, Math.max(5, (value / 64) * 100)) })),
+  }))
+  readonly radiusTokens = Object.entries(radii).map(([name, value]) => ({
+    name,
+    value,
+    usage: value <= 2 ? 'Fine detail' : value <= 6 ? 'Compact control' : value <= 12 ? 'Inputs & cards' : value <= 24 ? 'Large surface' : 'Pills & circles',
+  }))
+  readonly strokeTokens = Object.entries(strokes).map(([name, value]) => ({
+    name,
+    value,
+    usage: {
+      none: 'No visible border',
+      hairline: 'High-density divider',
+      'extra-thin': 'Subtle separator',
+      thin: 'Standard surface border',
+      default: 'Controls and inputs',
+      medium: 'Selected or focused state',
+      thick: 'Strong emphasis',
+      heavy: 'Illustrative accent',
+    }[name] ?? 'Interface stroke',
+  }))
   private sectionObserver?: IntersectionObserver
   private copyResetTimer?: number
 

@@ -51,3 +51,14 @@ export const radii = {
   none: 0, '2xs': 1, xs: 2, sm: 4, default: 6, md: 8, 'md-lg': 10,
   lg: 12, xl: 16, '2xl': 20, '3xl': 24, pill: 100, full: 9999,
 } as const
+
+export const strokes = {
+  none: 0,
+  hairline: 0.6667,
+  'extra-thin': 0.75,
+  thin: 1,
+  default: 1.5,
+  medium: 2,
+  thick: 3,
+  heavy: 4,
+} as const
