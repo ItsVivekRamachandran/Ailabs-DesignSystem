@@ -18,7 +18,10 @@
     <a class="brand" href="#top" aria-label="AI Labs home"><span class="brand__mark"><span></span></span><span>AI Labs</span><span class="brand__divider"></span><span class="brand__sub">Design system</span></a>
     <div class="topbar__actions">
       <ds-badge tone="success" [dot]="true">v0.1</ds-badge>
-      <ds-badge>Light mode</ds-badge>
+      <button class="theme-switch" type="button" [attr.aria-label]="'Switch to ' + (theme() === 'light' ? 'dark' : 'light') + ' mode'" [attr.aria-pressed]="theme() === 'dark'" (click)="toggleTheme()">
+        <span class="theme-switch__icon" aria-hidden="true"><svg><use [attr.href]="theme() === 'dark' ? '#icon-moon' : '#icon-sun'"></use></svg></span>
+        <span>{{ themeLabel() }} mode</span>
+      </button>
       <a class="icon-link" href="https://github.com/ItsVivekRamachandran/Ailabs-DesignSystem" aria-label="Open GitHub repository"><svg><use href="#icon-github"></use></svg></a>
     </div>
   </header>
@@ -31,15 +34,18 @@
       <a class="nav-item" [class.nav-item--active]="activeSection() === 'colors'" [attr.aria-current]="activeSection() === 'colors' ? 'page' : null" href="#colors" (click)="selectSection('colors', $event)"><svg><use href="#icon-palette"></use></svg><span>Colors</span>@if (activeSection() === 'colors') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
       <a class="nav-item" [class.nav-item--active]="activeSection() === 'variables'" [attr.aria-current]="activeSection() === 'variables' ? 'page' : null" href="#variables" (click)="selectSection('variables', $event)"><svg><use href="#icon-type"></use></svg><span>Variables</span>@if (activeSection() === 'variables') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
       <a class="nav-item" [class.nav-item--active]="activeSection() === 'components'" [attr.aria-current]="activeSection() === 'components' ? 'page' : null" href="#components" (click)="selectSection('components', $event)"><svg><use href="#icon-component"></use></svg><span>Components</span>@if (activeSection() === 'components') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
+      <a class="nav-item" [class.nav-item--active]="activeSection() === 'playground'" [attr.aria-current]="activeSection() === 'playground' ? 'page' : null" href="#playground" (click)="selectSection('playground', $event)"><svg><use href="#icon-box"></use></svg><span>Playground</span>@if (activeSection() === 'playground') { <span class="nav-arrow" aria-hidden="true">›</span> }</a>
     </nav>
     <div class="sidebar__note"><span class="sidebar__note-icon"><svg><use href="#icon-sparkles"></use></svg></span><p><strong>Built for AI.</strong><br />Calm interfaces for complex intelligence.</p></div>
   </aside>
 
   <main class="content" id="top">
     <section class="hero" id="overview">
-      <ds-badge tone="violet"><svg><use href="#icon-sparkles"></use></svg>Open foundation</ds-badge>
+      <ds-badge tone="violet"><svg><use href="#icon-sparkles"></use></svg>The Foundation Team</ds-badge>
+      <p class="hero__lede">Created by: Vivek Ramachandran - Fintech Product Designer</p>
       <h1>Interfaces for<br /><em>intelligent things.</em></h1>
       <p class="hero__lede">A flexible design language for products that think, learn, and collaborate with people.</p>
+      <
       <div class="hero__actions">
         <button dsButton size="lg" (click)="selectSection('components')"><svg><use href="#icon-box"></use></svg>Browse components</button>
         <button dsButton variant="secondary" size="lg"><svg><use href="#icon-github"></use></svg>View on GitHub</button>
@@ -95,7 +101,7 @@
     <section class="section" id="variables">
       <div class="section-heading">
         <div><p class="section-kicker">Semantic variables</p><h2>Meaning before value.</h2></div>
-        <p>Fifty-one Light-mode aliases connect product intent to the primitive palette.</p>
+        <p>Fifty-one {{ themeLabel() }}-mode aliases connect product intent to the primitive palette.</p>
       </div>
       <div class="semantic-grid">
         @for (group of semanticColorGroups; track group.name) {
@@ -221,6 +227,107 @@
           <div class="component-sample__heading"><div><span>10</span><h3>Time picker</h3></div><code>field · dial · input · error</code></div>
           <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-time-picker /><ds-time-picker value="09 : 30" /><ds-time-picker error="Invalid format" /></div><ds-time-clock /></div>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="playground">
+      <div class="section-heading playground-heading">
+        <div><p class="section-kicker">Developer playground</p><h2>Test it. Tune it. Copy it.</h2></div>
+        <p>Explore every core component in real time, validate its states in both themes, and copy production-ready Angular markup.</p>
+      </div>
+
+      <div class="playground-shell">
+        <aside class="playground-library" aria-label="Playground components">
+          <p>Components</p>
+          @for (component of playgroundComponents; track component.id) {
+            <button type="button" [class.is-active]="playgroundComponent() === component.id" [attr.aria-pressed]="playgroundComponent() === component.id" (click)="selectPlaygroundComponent(component.id)">
+              <span>{{ component.label }}</span><span aria-hidden="true">›</span>
+            </button>
+          }
+        </aside>
+
+        <div class="playground-studio">
+          <header class="playground-studio__header">
+            <div><span class="playground-status"><i></i>Live preview</span><h3>{{ playgroundDefinition().label }}</h3><p>{{ playgroundDefinition().description }}</p></div>
+            <span class="playground-import">Import <code>{{ playgroundDefinition().importName }}</code></span>
+          </header>
+
+          <div class="playground-controls" aria-label="Component controls">
+            @switch (playgroundComponent()) {
+              @case ('button') {
+                <label class="playground-field"><span>Variant</span><select [value]="playgroundVariant()" (change)="playgroundVariant.set($any($event.target).value)"><option value="primary">Primary</option><option value="secondary">Secondary</option><option value="outline">Outline</option><option value="ghost">Ghost</option></select></label>
+                <label class="playground-field"><span>Size</span><select [value]="playgroundSize()" (change)="playgroundSize.set($any($event.target).value)"><option value="sm">Small</option><option value="md">Medium</option><option value="lg">Large</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundIcon()" (change)="playgroundIcon.set($any($event.target).checked)" /><span>Leading icon</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('chip') {
+                <label class="playground-field"><span>Variant</span><select [value]="playgroundVariant()" (change)="playgroundVariant.set($any($event.target).value)"><option value="filled">Filled</option><option value="outlined">Outlined</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSelected()" (change)="playgroundSelected.set($any($event.target).checked)" /><span>Selected</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundIcon()" (change)="playgroundIcon.set($any($event.target).checked)" /><span>Leading icon</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('badge') {
+                <label class="playground-field"><span>Tone</span><select [value]="playgroundVariant()" (change)="playgroundVariant.set($any($event.target).value)"><option value="neutral">Neutral</option><option value="violet">Violet</option><option value="success">Success</option><option value="warning">Warning</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDot()" (change)="playgroundDot.set($any($event.target).checked)" /><span>Status dot</span></label>
+              }
+              @case ('checkbox') {
+                <label class="playground-field"><span>Value</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="default">Unchecked</option><option value="checked">Checked</option><option value="indeterminate">Indeterminate</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('switch') {
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSelected()" (change)="playgroundSelected.set($any($event.target).checked)" /><span>On</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('radio') {
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSelected()" (change)="playgroundSelected.set($any($event.target).checked)" /><span>Selected</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('input') {
+                <label class="playground-field"><span>State</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="default">Default</option><option value="filled">Filled</option><option value="error">Error</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundIcon()" (change)="playgroundIcon.set($any($event.target).checked)" /><span>Search icon</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('tabs') {
+                <label class="playground-field"><span>Active tab</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="default">Overview</option><option value="second">Activity</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disable Settings</span></label>
+              }
+              @case ('menu') {
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSelected()" (change)="playgroundSelected.set($any($event.target).checked)" /><span>Active</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSupporting()" (change)="playgroundSupporting.set($any($event.target).checked)" /><span>Shortcut</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+              @case ('list') {
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSelected()" (change)="playgroundSelected.set($any($event.target).checked)" /><span>Selected</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSupporting()" (change)="playgroundSupporting.set($any($event.target).checked)" /><span>Supporting text</span></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
+              }
+            }
+          </div>
+
+          <div class="playground-preview" aria-label="Component preview">
+            <span class="playground-preview__theme">{{ themeLabel() }} surface</span>
+            <div class="playground-preview__component">
+              @switch (playgroundComponent()) {
+                @case ('button') { <button dsButton [variant]="$any(playgroundVariant())" [size]="$any(playgroundSize())" [disabled]="playgroundDisabled()">@if (playgroundIcon()) { <svg><use href="#icon-sparkles"></use></svg> }Run action</button> }
+                @case ('chip') { <button dsChip [variant]="$any(playgroundVariant())" [selected]="playgroundSelected()" [disabled]="playgroundDisabled()">@if (playgroundIcon()) { <svg><use href="#icon-sparkles"></use></svg> }AI ready</button> }
+                @case ('badge') { <ds-badge [tone]="$any(playgroundVariant())" [dot]="playgroundDot()">Ready</ds-badge> }
+                @case ('checkbox') { <ds-checkbox [checked]="playgroundState() === 'checked'" [indeterminate]="playgroundState() === 'indeterminate'" [disabled]="playgroundDisabled()" (checkedChange)="playgroundState.set($event ? 'checked' : 'default')">Include insights</ds-checkbox> }
+                @case ('switch') { <ds-switch [checked]="playgroundSelected()" [disabled]="playgroundDisabled()" (checkedChange)="playgroundSelected.set($event)">Auto-save</ds-switch> }
+                @case ('radio') { <ds-radio name="playground-model" value="recommended" [checked]="playgroundSelected()" [disabled]="playgroundDisabled()" (checkedChange)="playgroundSelected.set($event)">Recommended</ds-radio> }
+                @case ('input') { <ds-input label="Project name" placeholder="Enter project name" [value]="playgroundState() === 'filled' ? 'AI workspace' : ''" [error]="playgroundState() === 'error' ? 'A project name is required' : ''" [icon]="playgroundIcon() ? 'search' : ''" [disabled]="playgroundDisabled()" /> }
+                @case ('tabs') { <div role="tablist"><button dsTab [active]="playgroundState() !== 'second'" (click)="playgroundState.set('default')">Overview</button><button dsTab [active]="playgroundState() === 'second'" (click)="playgroundState.set('second')">Activity</button><button dsTab [disabled]="playgroundDisabled()">Settings</button></div> }
+                @case ('menu') { <div role="menu"><button dsMenuItem [shortcut]="playgroundSupporting() ? '⌘K' : ''" [active]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())">Open command</button></div> }
+                @case ('list') { <button dsListItem title="AI workspace" [supportingText]="playgroundSupporting() ? 'Updated moments ago' : ''" [selected]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())"><span avatar></span><span trailing>›</span></button> }
+              }
+            </div>
+          </div>
+
+          <div class="playground-code">
+            <header><div><span>Angular template</span><p>Add <code>{{ playgroundDefinition().importName }}</code> to your standalone component imports.</p></div><button type="button" (click)="copyPlaygroundCode()"><svg><use [attr.href]="playgroundCopied() ? '#icon-check' : '#icon-copy'"></use></svg>{{ playgroundCopied() ? 'Copied' : 'Copy code' }}</button></header>
+            <pre><code>{{ playgroundCode() }}</code></pre>
+            <p class="sr-only" aria-live="polite">@if (playgroundCopied()) { Component code copied to clipboard. }</p>
+          </div>
+        </div>
       </div>
     </section>
 
