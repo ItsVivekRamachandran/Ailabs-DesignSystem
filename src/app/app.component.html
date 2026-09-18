@@ -1,0 +1,192 @@
+<svg class="icon-sprite" aria-hidden="true">
+  <symbol id="icon-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.4 3.6a2 2 0 0 1-1.2 1.2L6 9l3.4 1.2a2 2 0 0 1 1.2 1.2L12 15l1.4-3.6a2 2 0 0 1 1.2-1.2L18 9l-3.4-1.2a2 2 0 0 1-1.2-1.2L12 3Z"/><path d="m5 15-.7 1.8a1 1 0 0 1-.6.6L2 18l1.7.6a1 1 0 0 1 .6.6L5 21l.7-1.8a1 1 0 0 1 .6-.6L8 18l-1.7-.6a1 1 0 0 1-.6-.6L5 15Z"/><path d="m19 13-.7 1.8a1 1 0 0 1-.6.6L16 16l1.7.6a1 1 0 0 1 .6.6L19 19l.7-1.8a1 1 0 0 1 .6-.6L22 16l-1.7-.6a1 1 0 0 1-.6-.6L19 13Z"/></symbol>
+  <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+  <symbol id="icon-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2a10 10 0 0 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.6-1.4-.4-.3-.6-.8-.6-1.3 0-1.1.9-2 2-2H17a5 5 0 0 0 5-5c0-4.6-4.5-8.3-10-8.3Z"/></symbol>
+  <symbol id="icon-type" viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></symbol>
+  <symbol id="icon-component" viewBox="0 0 24 24"><path d="M5 5h4v4H5zM15 5h4v4h-4zM5 15h4v4H5zM15 15h4v4h-4z"/><path d="M9 7h6M7 9v6M17 9v6M9 17h6"/></symbol>
+  <symbol id="icon-box" viewBox="0 0 24 24"><path d="m21 8-9 5-9-5 9-5 9 5Z"/><path d="m3 8 9 5v9l-9-5V8ZM21 8l-9 5v9l9-5V8Z"/></symbol>
+  <symbol id="icon-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.3 4 5 5 0 0 0 19.2.5S18 0 15 2a13.4 13.4 0 0 0-7 0C5 .1 3.8.5 3.8.5A5 5 0 0 0 3.7 4a5.4 5.4 0 0 0-1.5 3.7c0 5.3 3.5 6.5 6.8 6.9A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="AI Labs home"><span class="brand__mark"><span></span></span><span>AI Labs</span><span class="brand__divider"></span><span class="brand__sub">Design system</span></a>
+    <div class="topbar__actions">
+      <ds-badge tone="success" [dot]="true">v0.1</ds-badge>
+      <ds-badge>Light mode</ds-badge>
+      <a class="icon-link" href="https://github.com/ItsVivekRamachandran/Ailabs-DesignSystem" aria-label="Open GitHub repository"><svg><use href="#icon-github"></use></svg></a>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <nav aria-label="Documentation">
+      <p class="nav-label">Explore</p>
+      <a class="nav-item nav-item--active" href="#overview"><svg><use href="#icon-sparkles"></use></svg><span>Overview</span><span class="nav-arrow">›</span></a>
+      <a class="nav-item" href="#foundations"><svg><use href="#icon-layers"></use></svg><span>Foundations</span></a>
+      <a class="nav-item" href="#colors"><svg><use href="#icon-palette"></use></svg><span>Colors</span></a>
+      <a class="nav-item" href="#variables"><svg><use href="#icon-type"></use></svg><span>Variables</span></a>
+      <a class="nav-item" href="#components"><svg><use href="#icon-component"></use></svg><span>Components</span></a>
+    </nav>
+    <div class="sidebar__note"><span class="sidebar__note-icon"><svg><use href="#icon-sparkles"></use></svg></span><p><strong>Built for AI.</strong><br />Calm interfaces for complex intelligence.</p></div>
+  </aside>
+
+  <main class="content" id="top">
+    <section class="hero" id="overview">
+      <ds-badge tone="violet"><svg><use href="#icon-sparkles"></use></svg>Open foundation</ds-badge>
+      <h1>Interfaces for<br /><em>intelligent things.</em></h1>
+      <p class="hero__lede">A flexible design language for products that think, learn, and collaborate with people.</p>
+      <div class="hero__actions">
+        <button dsButton size="lg"><svg><use href="#icon-box"></use></svg>Browse components</button>
+        <button dsButton variant="secondary" size="lg"><svg><use href="#icon-github"></use></svg>View on GitHub</button>
+      </div>
+      <div class="install-command">
+        <span class="install-command__prompt">$</span><code>npm install &#64;ailabs/design-system</code>
+        <button (click)="copyInstall()" aria-label="Copy install command"><svg><use [attr.href]="copied() ? '#icon-check' : '#icon-copy'"></use></svg></button>
+        @if (copied()) { <span class="copy-label">Copied</span> }
+      </div>
+    </section>
+
+    <section class="principles-grid" aria-label="Design principles">
+      <article class="principle principle--dark"><span class="principle__number">01</span><div class="orb" aria-hidden="true"><span></span></div><h2>Clear by default.</h2><p>Reduce cognitive load. Make the next action obvious and the system state legible.</p></article>
+      <article class="principle principle--lime"><span class="principle__number">02</span><div class="signal-lines" aria-hidden="true"><span></span><span></span><span></span></div><h2>Quietly expressive.</h2><p>Use character with purpose. Delight should support the task, never compete with it.</p></article>
+      <article class="principle principle--violet"><span class="principle__number">03</span><div class="nodes" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h2>Adaptive always.</h2><p>Design for evolving context, responsive intelligence, and every kind of person.</p></article>
+    </section>
+
+    <section class="section" id="colors">
+      <div class="section-heading">
+        <div><p class="section-kicker">Color primitives</p><h2>Five purposeful ramps.</h2></div>
+        <p>Exact values from the Figma Primitives collection. Product UI should consume the semantic aliases below.</p>
+      </div>
+      <div class="color-ramps">
+        @for (ramp of colorRamps; track ramp.name) {
+          <article class="color-ramp">
+            <div class="color-ramp__intro"><h3>{{ ramp.name }}</h3><p>{{ ramp.description }}</p></div>
+            <div class="color-ramp__tokens">
+              @for (token of ramp.tokens; track token.name) {
+                <div class="color-chip">
+                  <span class="color-chip__sample" [style.background]="token.value"></span>
+                  <strong>{{ token.name }}</strong><code>{{ token.value }}</code>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section" id="variables">
+      <div class="section-heading">
+        <div><p class="section-kicker">Semantic variables</p><h2>Meaning before value.</h2></div>
+        <p>Fifty-one Light-mode aliases connect product intent to the primitive palette.</p>
+      </div>
+      <div class="semantic-grid">
+        @for (group of semanticColorGroups; track group.name) {
+          <article class="semantic-group">
+            <h3>{{ group.name }}</h3>
+            <div class="semantic-group__tokens">
+              @for (tokenName of group.tokens; track tokenName) {
+                <div class="semantic-token">
+                  <span [style.background]="'var(--' + group.prefix + '-' + tokenName + ')'" aria-hidden="true"></span>
+                  <code>{{ group.prefix }}/{{ tokenName }}</code>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+      <div class="variable-scales">
+        <article>
+          <p class="section-kicker">Spacing</p><h3>23-step spatial scale</h3>
+          <div class="spacing-scale">
+            @for (value of spacing; track value) { <span [style.width.px]="value || 2" [title]="value + 'px'"></span> }
+          </div>
+          <code>0 · 1 · 2 · 3 · 4 · 6 · 8 · 10 · 11 · 12 · 14 · 16 · 20 · 24 · 32 · 40 · 48 · 56 · 64 · 80 · 96 · 120 · 160</code>
+        </article>
+        <article>
+          <p class="section-kicker">Radius</p><h3>13 shape variables</h3>
+          <div class="radius-scale">
+            @for (radius of radiusTokens; track radius.name) {
+              <span [style.border-radius.px]="radius.value > 100 ? 9999 : radius.value"><i>{{ radius.name }}</i></span>
+            }
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="foundations">
+      <div class="section-heading"><div><p class="section-kicker">Foundations</p><h2>A system with a point of view.</h2></div><p>Tokens do more than standardize values. They encode how the product should feel.</p></div>
+      <div class="showcase-grid">
+        <ds-card eyebrow="Color" title="A focused palette" description="Neutral foundations with two expressive signals.">
+          <div class="swatches"><div class="swatch-item"><div class="swatch swatch--ink"></div><strong>Ink</strong><code>#0D120F</code></div><div class="swatch-item"><div class="swatch swatch--canvas"></div><strong>Canvas</strong><code>#FEFDFC</code></div><div class="swatch-item"><div class="swatch swatch--signal"></div><strong>Brand</strong><code>#123F36</code></div><div class="swatch-item"><div class="swatch swatch--violet"></div><strong>Accent</strong><code>#C49A45</code></div></div>
+        </ds-card>
+        <ds-card eyebrow="Typography" title="Confident, not loud" description="A modern scale that stays readable at every density.">
+          <div class="type-specimen"><p class="type-display">Think clearly.</p><p class="type-heading">Build intelligently.</p><p class="type-body">Human-centered tools should feel natural from the first interaction.</p><div class="type-meta"><span>Inter</span><span>–2% tracking</span><span>1.5× leading</span></div></div>
+        </ds-card>
+      </div>
+    </section>
+
+    <section class="section" id="components">
+      <div class="section-heading"><div><p class="section-kicker">Components</p><h2>The complete Figma set.</h2></div><a href="https://www.figma.com/design/FZDQAzD6Q44OMCeYDKdfp8/AILab-Design-System?node-id=1-3" target="_blank" rel="noreferrer"><button dsButton variant="outline"><svg><use href="#icon-arrow"></use></svg>Open Figma library</button></a></div>
+      <div class="component-catalog">
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>01</span><h3>Button</h3></div><code>3 styles · 3 types · 3 states</code></div>
+          <div class="component-sample__canvas preview-row">
+            <button dsButton>Button</button><button dsButton variant="secondary">Button</button><button dsButton variant="outline">Button</button><button dsButton><svg><use href="#icon-sparkles"></use></svg>Button</button><button dsButton [iconOnly]="true" aria-label="Add"><svg><use href="#icon-sparkles"></use></svg></button><button dsButton disabled>Disabled</button>
+          </div>
+        </article>
+
+        <article class="component-sample">
+          <div class="component-sample__heading"><div><span>02</span><h3>Checkbox</h3></div><code>3 values · 3 states</code></div>
+          <div class="component-sample__canvas control-stack"><ds-checkbox>Unchecked</ds-checkbox><ds-checkbox [checked]="true">Checked</ds-checkbox><ds-checkbox [indeterminate]="true">Indeterminate</ds-checkbox><ds-checkbox [disabled]="true">Disabled</ds-checkbox></div>
+        </article>
+
+        <article class="component-sample">
+          <div class="component-sample__heading"><div><span>03</span><h3>Chip</h3></div><code>2 styles · 3 types</code></div>
+          <div class="component-sample__canvas preview-row"><button dsChip>Chip</button><button dsChip [selected]="true">Selected</button><button dsChip variant="outlined">Outlined</button><button dsChip><svg><use href="#icon-sparkles"></use></svg>AI chip</button><button dsChip [iconOnly]="true" aria-label="AI chip"><svg><use href="#icon-sparkles"></use></svg></button><button dsChip disabled>Disabled</button></div>
+        </article>
+
+        <article class="component-sample">
+          <div class="component-sample__heading"><div><span>04</span><h3>Switch & radio</h3></div><code>on · off · disabled</code></div>
+          <div class="component-sample__canvas control-stack"><ds-switch>Notifications</ds-switch><ds-switch [checked]="true">Auto-save</ds-switch><ds-switch [disabled]="true">Disabled</ds-switch><div class="preview-row"><ds-radio name="model" value="fast">Fast</ds-radio><ds-radio name="model" value="smart" [checked]="true">Smart</ds-radio><ds-radio name="model" value="disabled" [disabled]="true">Disabled</ds-radio></div></div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>05</span><h3>Text field</h3></div><code>default · focus · filled · error · disabled</code></div>
+          <div class="component-sample__canvas field-grid"><ds-input label="Label" placeholder="Placeholder" /><ds-input label="Label" value="Filled value" /><ds-input label="Label" placeholder="Placeholder" error="Error message" /><ds-input label="Label" placeholder="Placeholder" [disabled]="true" /></div>
+        </article>
+
+        <article class="component-sample">
+          <div class="component-sample__heading"><div><span>06</span><h3>Tabs & tooltip</h3></div><code>active · inactive · disabled</code></div>
+          <div class="component-sample__canvas navigation-preview"><div role="tablist"><button dsTab [active]="true">Tab</button><button dsTab>Tab</button><button dsTab disabled>Tab</button></div><div class="tooltip-preview"><ds-tooltip text="Tooltip text" position="top" [visible]="true"><button dsButton variant="outline" size="sm">Hover me</button></ds-tooltip></div></div>
+        </article>
+
+        <article class="component-sample">
+          <div class="component-sample__heading"><div><span>07</span><h3>Menu item</h3></div><code>4 states</code></div>
+          <div class="component-sample__canvas menu-preview" role="menu"><button dsMenuItem shortcut="⌘K">Menu item</button><button dsMenuItem shortcut="⌘K" [active]="true">Active item</button><button dsMenuItem shortcut="⌘K" disabled>Disabled item</button></div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>08</span><h3>List item</h3></div><code>single line · two line · 4 states</code></div>
+          <div class="component-sample__canvas list-preview"><button dsListItem title="List item"><span avatar></span><span trailing>›</span></button><button dsListItem title="Selected item" supportingText="Supporting text" [selected]="true"><span avatar></span><span trailing>›</span></button><button dsListItem title="Disabled item" supportingText="Supporting text" disabled><span avatar></span></button></div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>09</span><h3>Date picker</h3></div><code>field · calendar · month · year</code></div>
+          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-date-picker /><ds-date-picker value="03 / 24 / 2024" /><ds-date-picker error="Invalid format" /></div><ds-date-calendar /></div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>10</span><h3>Time picker</h3></div><code>field · dial · input · error</code></div>
+          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-time-picker /><ds-time-picker value="09 : 30" /><ds-time-picker error="Invalid format" /></div><ds-time-clock /></div>
+        </article>
+      </div>
+    </section>
+
+    <footer><div class="brand brand--footer"><span class="brand__mark"><span></span></span><span>AI Labs</span></div><p>Designed for humans. Built for intelligence.</p><span>v0.1.0</span></footer>
+  </main>
+</div>
