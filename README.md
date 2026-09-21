@@ -24,6 +24,11 @@ The Angular component layer includes every family planned in Figma:
 All components are standalone Angular components and are exported from
 `src/app/design-system/index.ts`.
 
+## Documentation
+
+- [Full technical documentation](docs/TECHNICAL_DOCUMENTATION.md) — setup, architecture, component APIs, tokens, accessibility, deployment, troubleshooting, and maintenance guidance.
+- [Distributable PDF](output/pdf/AI_Labs_Design_System_Technical_Documentation.pdf)
+
 ## Component usage
 
 ```ts
