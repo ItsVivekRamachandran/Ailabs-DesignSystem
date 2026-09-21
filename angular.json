@@ -17,6 +17,9 @@
             "index": "index.html",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
+            "assets": [
+              { "glob": "**/*", "input": "src/assets", "output": "assets" }
+            ],
             "styles": [
               "src/design-system/tokens.css",
               "src/design-system/components.css",

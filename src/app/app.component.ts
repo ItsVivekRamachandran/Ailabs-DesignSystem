@@ -12,10 +12,13 @@ import {
   ListItemComponent,
   MenuItemComponent,
   RadioComponent,
+  SearchBarComponent,
+  SearchPanelComponent,
   SwitchComponent,
   TabComponent,
   TimeClockComponent,
   TimePickerComponent,
+  ToolbarComponent,
   TooltipComponent,
 } from './design-system'
 
@@ -34,10 +37,13 @@ import {
     ListItemComponent,
     MenuItemComponent,
     RadioComponent,
+    SearchBarComponent,
+    SearchPanelComponent,
     SwitchComponent,
     TabComponent,
     TimeClockComponent,
     TimePickerComponent,
+    ToolbarComponent,
     TooltipComponent,
   ],
   templateUrl: './app.component.html',
@@ -60,6 +66,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     { id: 'tabs', label: 'Tabs', description: 'Switch between related views at the same hierarchy.', importName: 'TabComponent' },
     { id: 'menu', label: 'Menu item', description: 'Command rows with active, shortcut, and disabled states.', importName: 'MenuItemComponent' },
     { id: 'list', label: 'List item', description: 'Single or two-line navigation and selection rows.', importName: 'ListItemComponent' },
+    { id: 'search', label: 'Search', description: 'Search entry with clear and submit actions plus interaction states.', importName: 'SearchBarComponent' },
+    { id: 'toolbar', label: 'Toolbar', description: 'Docked and floating action containers with standard and vibrant treatments.', importName: 'ToolbarComponent' },
   ] as const
   readonly playgroundComponent = signal('button')
   readonly playgroundVariant = signal('primary')
@@ -98,6 +106,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         return `<button dsMenuItem${this.playgroundSupporting() ? ' shortcut="⌘K"' : ''}${this.playgroundSelected() ? ' [active]="true"' : ''}${disabled}>Open command</button>`
       case 'list':
         return `<button dsListItem title="AI workspace"${this.playgroundSupporting() ? ' supportingText="Updated moments ago"' : ''}${this.playgroundSelected() ? ' [selected]="true"' : ''}${disabled}>\n  <span avatar></span>\n  <span trailing>›</span>\n</button>`
+      case 'search':
+        return `<ds-search-bar placeholder="Hinted search text" state="${this.playgroundState()}" />`
+      case 'toolbar':
+        return `<ds-toolbar variant="${this.playgroundVariant()}" tone="${this.playgroundState()}"${this.playgroundSupporting() ? '' : ' [expanded]="false"'}>\n  <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-bold"></use></svg></button>\n  <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-italic"></use></svg></button>\n  <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-underlined"></use></svg></button>\n</ds-toolbar>`
       default:
         return `<button dsButton variant="${this.playgroundVariant()}" size="${this.playgroundSize()}"${disabled}>${icon}Run action</button>`
     }
@@ -193,9 +205,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   selectPlaygroundComponent(component: string): void {
     this.playgroundComponent.set(component)
-    this.playgroundVariant.set(component === 'chip' ? 'filled' : component === 'badge' ? 'neutral' : 'primary')
+    this.playgroundVariant.set(component === 'chip' ? 'filled' : component === 'badge' ? 'neutral' : component === 'toolbar' ? 'docked' : 'primary')
     this.playgroundSize.set('md')
-    this.playgroundState.set('default')
+    this.playgroundState.set(component === 'toolbar' ? 'standard' : 'default')
     this.playgroundDisabled.set(false)
     this.playgroundSelected.set(false)
     this.playgroundIcon.set(false)

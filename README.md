@@ -16,6 +16,8 @@ The Angular component layer includes every family planned in Figma:
 
 - Button, Checkbox, Chip, Switch, and Radio
 - Text Field, Tab, Tooltip, Menu Item, and List Item
+- Search Bar and Docked Search layouts
+- Docked, horizontal floating, and vertical floating Toolbars
 - Date Picker with Calendar views
 - Time Picker with Dial and Input views
 
@@ -29,15 +31,23 @@ import {
   ButtonComponent,
   CheckboxComponent,
   DatePickerComponent,
+  SearchBarComponent,
+  ToolbarComponent,
 } from './design-system'
 
 @Component({
   standalone: true,
-  imports: [ButtonComponent, CheckboxComponent, DatePickerComponent],
+  imports: [ButtonComponent, CheckboxComponent, DatePickerComponent, SearchBarComponent, ToolbarComponent],
   template: `
     <button dsButton>Continue</button>
     <ds-checkbox>Remember me</ds-checkbox>
     <ds-date-picker label="Start date" />
+    <ds-search-bar placeholder="Search projects" />
+    <ds-toolbar variant="floating-horizontal" tone="vibrant">
+      <button dsButton [iconOnly]="true" aria-label="Bold">…</button>
+      <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic">…</button>
+      <button dsButton variant="ghost" [iconOnly]="true" aria-label="Underline">…</button>
+    </ds-toolbar>
   `,
 })
 export class ExampleComponent {}

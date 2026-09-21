@@ -11,6 +11,10 @@
   <symbol id="icon-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
   <symbol id="icon-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></symbol>
   <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <!-- Material Icons: format_bold, format_italic, format_underlined -->
+  <symbol id="icon-material-format-bold" viewBox="0 0 24 24"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42ZM10 6.5h3c.83 0 1.5.67 1.5 1.5S13.83 9.5 13 9.5h-3v-3Zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5Z"/></symbol>
+  <symbol id="icon-material-format-italic" viewBox="0 0 24 24"><path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4h-8Z"/></symbol>
+  <symbol id="icon-material-format-underlined" viewBox="0 0 24 24"><path d="M5 21h14v-2H5v2Zm7-4c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6Z"/></symbol>
 </svg>
 
 <div class="app-shell">
@@ -218,13 +222,44 @@
         </article>
 
         <article class="component-sample component-sample--wide">
-          <div class="component-sample__heading"><div><span>09</span><h3>Date picker</h3></div><code>field · calendar · month · year</code></div>
+          <div class="component-sample__heading"><div><span>09</span><h3>Search</h3></div><code>bar · docked</code></div>
+          <div class="component-sample__canvas search-preview">
+            <div class="search-preview__bars"><ds-search-bar /><ds-search-bar state="hovered" /><ds-search-bar state="focused" value="Input text" /></div>
+            <div class="search-preview__panels"><ds-search-panel configuration="input" value="Input text" /><ds-search-panel configuration="supporting" /></div>
+          </div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>10</span><h3>Date picker</h3></div><code>field · calendar · month · year</code></div>
           <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-date-picker /><ds-date-picker value="03 / 24 / 2024" /><ds-date-picker error="Invalid format" /></div><ds-date-calendar /></div>
         </article>
 
         <article class="component-sample component-sample--wide">
-          <div class="component-sample__heading"><div><span>10</span><h3>Time picker</h3></div><code>field · dial · input · error</code></div>
+          <div class="component-sample__heading"><div><span>11</span><h3>Time picker</h3></div><code>field · dial · input · error</code></div>
           <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-time-picker /><ds-time-picker value="09 : 30" /><ds-time-picker error="Invalid format" /></div><ds-time-clock /></div>
+        </article>
+
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><div><span>12</span><h3>Toolbar</h3></div><code>docked · floating · standard · vibrant</code></div>
+          <div class="component-sample__canvas toolbar-preview">
+            <ds-toolbar variant="docked">
+              <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon"><use href="#icon-material-format-bold"></use></svg></button>
+              <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon"><use href="#icon-material-format-italic"></use></svg></button>
+              <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon"><use href="#icon-material-format-underlined"></use></svg></button>
+            </ds-toolbar>
+            <div class="toolbar-preview__floating">
+              <ds-toolbar variant="floating-horizontal" tone="vibrant">
+                <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon"><use href="#icon-material-format-bold"></use></svg></button>
+                <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon"><use href="#icon-material-format-italic"></use></svg></button>
+                <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon"><use href="#icon-material-format-underlined"></use></svg></button>
+              </ds-toolbar>
+              <ds-toolbar variant="floating-vertical" tone="standard">
+                <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon"><use href="#icon-material-format-bold"></use></svg></button>
+                <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon"><use href="#icon-material-format-italic"></use></svg></button>
+                <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon"><use href="#icon-material-format-underlined"></use></svg></button>
+              </ds-toolbar>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -300,6 +335,14 @@
                 <label class="playground-check"><input type="checkbox" [checked]="playgroundSupporting()" (change)="playgroundSupporting.set($any($event.target).checked)" /><span>Supporting text</span></label>
                 <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
               }
+              @case ('search') {
+                <label class="playground-field"><span>State</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="default">Default</option><option value="hovered">Hovered</option><option value="focused">Focused</option></select></label>
+              }
+              @case ('toolbar') {
+                <label class="playground-field"><span>Variant</span><select [value]="playgroundVariant()" (change)="playgroundVariant.set($any($event.target).value)"><option value="docked">Docked</option><option value="floating-horizontal">Floating horizontal</option><option value="floating-vertical">Floating vertical</option></select></label>
+                <label class="playground-field"><span>Tone</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="standard">Standard</option><option value="vibrant">Vibrant</option></select></label>
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundSupporting()" (change)="playgroundSupporting.set($any($event.target).checked)" /><span>Expanded</span></label>
+              }
             }
           </div>
 
@@ -317,6 +360,14 @@
                 @case ('tabs') { <div role="tablist"><button dsTab [active]="playgroundState() !== 'second'" (click)="playgroundState.set('default')">Overview</button><button dsTab [active]="playgroundState() === 'second'" (click)="playgroundState.set('second')">Activity</button><button dsTab [disabled]="playgroundDisabled()">Settings</button></div> }
                 @case ('menu') { <div role="menu"><button dsMenuItem [shortcut]="playgroundSupporting() ? '⌘K' : ''" [active]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())">Open command</button></div> }
                 @case ('list') { <button dsListItem title="AI workspace" [supportingText]="playgroundSupporting() ? 'Updated moments ago' : ''" [selected]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())"><span avatar></span><span trailing>›</span></button> }
+                @case ('search') { <ds-search-bar [state]="$any(playgroundState())" /> }
+                @case ('toolbar') {
+                  <ds-toolbar [variant]="$any(playgroundVariant())" [tone]="$any(playgroundState())" [expanded]="playgroundSupporting()">
+                    <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon"><use href="#icon-material-format-bold"></use></svg></button>
+                    <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon"><use href="#icon-material-format-italic"></use></svg></button>
+                    <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon"><use href="#icon-material-format-underlined"></use></svg></button>
+                  </ds-toolbar>
+                }
               }
             </div>
           </div>

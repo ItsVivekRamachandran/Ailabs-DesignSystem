@@ -233,6 +233,10 @@
   --shadow-sm: 0 1px 2px rgba(13, 18, 15, 0.06), 0 1px 4px rgba(13, 18, 15, 0.04);
   --shadow-md: 0 16px 48px rgba(13, 18, 15, 0.1);
   --focus-ring: 0 0 0 3px color-mix(in srgb, var(--border-focus), transparent 72%);
+  --search-surface: var(--primitive-primary-50);
+  --search-field: #e8f0ee;
+  --search-border: #e5ece9;
+  --search-muted: #646e6b;
 }
 
 /* Dark theme: semantic aliases change while primitive values stay stable. */
@@ -292,4 +296,8 @@
   --border-accent: var(--primitive-support-gold-400);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.22);
   --shadow-md: 0 18px 54px rgba(0, 0, 0, 0.42);
+  --search-surface: var(--primitive-neutral-900);
+  --search-field: var(--primitive-neutral-800);
+  --search-border: var(--border-subtle);
+  --search-muted: var(--text-secondary);
 }
