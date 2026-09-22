@@ -34,7 +34,7 @@ jobs:
         run: npm run build:pages
 
       - name: Add SPA fallback
-        run: cp dist/ailabs-design-system/browser/index.html dist/ailabs-design-system/browser/404.html
+        run: cp dist/playground/browser/index.html dist/playground/browser/404.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -42,7 +42,7 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/ailabs-design-system/browser
+          path: dist/playground/browser
 
   deploy:
     environment:
