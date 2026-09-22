@@ -27,7 +27,9 @@ All components are standalone Angular components and are exported by the
 ## Documentation
 
 - [Full technical documentation](docs/TECHNICAL_DOCUMENTATION.md) — setup, architecture, component APIs, tokens, accessibility, deployment, troubleshooting, and maintenance guidance.
-- [Distributable PDF](output/pdf/AI_Labs_Design_System_Technical_Documentation.pdf)
+- [Technical reference PDF](output/pdf/AI_Labs_Design_System_Technical_Documentation.pdf)
+- [Step-by-step guide](docs/STEP_BY_STEP_GUIDE.md) - Figma library setup, installation, component development, GitHub Pages, npm publishing, upgrades, and recovery.
+- [Step-by-step guide PDF](output/pdf/AI_Labs_Design_System_Step_by_Step_Guide.pdf)
 
 ## Component usage
 
@@ -90,11 +92,11 @@ npm run pack
 ```
 
 The package build is written to `dist/ailabs-design-system`, and `npm run pack`
-also creates `dist/ailabs-design-system-0.1.0.tgz`. Install that archive in
+also creates `dist/ailabs-design-system-0.1.2.tgz`. Install that archive in
 another Angular 22 project:
 
 ```bash
-npm install /absolute/path/to/itsproject/dist/ailabs-design-system-0.1.0.tgz
+npm install /absolute/path/to/itsproject/dist/ailabs-design-system-0.1.2.tgz
 ```
 
 For local iteration, you can install the unpacked output instead:

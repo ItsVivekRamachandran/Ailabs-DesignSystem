@@ -1,9 +1,14 @@
 # AI Labs Design System - Technical Documentation
 
-**Application version:** 0.1.0  
-**Framework:** Angular 22.1  
-**Documentation revision:** 21 September 2026  
+**Application version:** 0.1.2
+**Framework:** Angular 22.1
+**Documentation revision:** 22 September 2026
 **Repository:** `ItsVivekRamachandran/Ailabs-DesignSystem`
+
+**Source baseline:** commit `88d2cc8`
+**Companion:** `docs/STEP_BY_STEP_GUIDE.md` and the Step-by-Step Guide PDF cover Figma, installation, GitHub, npm releases, upgrades, and recovery.
+
+The repository package name is AI Labs Design System (`ailabs-design-system`). The showcase header currently displays IGT & Everi; these labels refer to the same checked-in application. This reference describes local source behavior, not verified npm publication or Figma library status.
 
 ## 1. Purpose and scope
 
@@ -115,7 +120,7 @@ Angular CLI 22.1.8 declares support for:
 - Node.js `^22.22.3`, `^24.15.0`, or `>=26.0.0`.
 - npm 8 or newer (the CLI also lists legacy compatible ranges).
 
-The verified build documented here used Node.js 24.16.0 and npm 11.13.0.
+The documentation environment used Node.js 24.16.0 and npm 11.13.0. The engine range above was read from the installed CLI package. Consult the [Angular compatibility reference](https://angular.dev/reference/versions) before changing framework versions.
 
 ### 4.2 Local setup
 
@@ -252,13 +257,13 @@ Because component styles are global, class names use the `ds-` prefix to reduce 
 
 ### 6.3 Asset paths
 
-Search icons are embedded in the component templates, so consumers do not need to configure asset copying.
+Search icons are embedded in the component templates, so consumers do not need to configure asset copying for those components. Playground snippets can contain SVG symbol references defined only in the showcase, including `#icon-sparkles` and toolbar symbols. Supply equivalent symbols or replace those icons in the consuming app.
 
 ## 7. Component API reference
 
 ### 7.1 Button
 
-**Import:** `ButtonComponent`  
+**Import:** `ButtonComponent`
 **Selector:** `button[dsButton]`
 
 | Input | Type | Default | Description |
@@ -276,7 +281,7 @@ Use the native `disabled`, `type`, click events, and ARIA attributes directly on
 
 ### 7.2 Badge
 
-**Import:** `BadgeComponent`  
+**Import:** `BadgeComponent`
 **Selector:** `ds-badge`
 
 | Input | Type | Default |
@@ -292,7 +297,7 @@ Badge content is projected. The optional dot is decorative and hidden from assis
 
 ### 7.3 Card
 
-**Import:** `CardComponent`  
+**Import:** `CardComponent`
 **Selector:** `ds-card`
 
 | Input | Type | Default |
@@ -311,7 +316,7 @@ The header is omitted when all three header inputs are empty.
 
 ### 7.4 Checkbox
 
-**Import:** `CheckboxComponent`  
+**Import:** `CheckboxComponent`
 **Selector:** `ds-checkbox`
 
 | Input / output | Type | Default / payload |
@@ -329,7 +334,7 @@ A user change clears `indeterminate`, updates the internal input value, and emit
 
 ### 7.5 Chip
 
-**Import:** `ChipComponent`  
+**Import:** `ChipComponent`
 **Selector:** `button[dsChip]`
 
 | Input | Type | Default |
@@ -346,7 +351,7 @@ The component provides styling only; consumers own selection state and click beh
 
 ### 7.6 Text field
 
-**Imports:** `InputComponent` or its export alias `TextFieldComponent`  
+**Imports:** `InputComponent` or its export alias `TextFieldComponent`
 **Selectors:** `ds-input`, `ds-text-field`
 
 | Input / output | Type | Default / payload |
@@ -374,7 +379,7 @@ When `error` is non-empty, it replaces the hint, sets `aria-invalid`, and links 
 
 ### 7.7 Switch
 
-**Import:** `SwitchComponent`  
+**Import:** `SwitchComponent`
 **Selector:** `ds-switch`
 
 | Input / output | Type | Default / payload |
@@ -387,7 +392,7 @@ The internal checkbox uses `role="switch"`. Prefer a switch for settings that ta
 
 ### 7.8 Radio
 
-**Import:** `RadioComponent`  
+**Import:** `RadioComponent`
 **Selector:** `ds-radio`
 
 | Input / output | Type | Default / payload |
@@ -407,7 +412,7 @@ Always provide the same explicit `name` for every option in a group. The compone
 
 ### 7.9 Tab
 
-**Import:** `TabComponent`  
+**Import:** `TabComponent`
 **Selector:** `button[dsTab]`
 
 | Input | Type | Default |
@@ -418,7 +423,7 @@ The host receives `role="tab"` and `aria-selected`. Place tabs in a `role="tabli
 
 ### 7.10 Tooltip
 
-**Import:** `TooltipComponent`  
+**Import:** `TooltipComponent`
 **Selector:** `ds-tooltip`
 
 | Input | Type | Default |
@@ -427,11 +432,11 @@ The host receives `role="tab"` and `aria-selected`. Place tabs in a `role="tabli
 | `position` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
 | `visible` | `boolean` | `false` |
 
-Projected trigger content receives `aria-describedby` through a wrapper. CSS displays the bubble on trigger hover or when `visible` is true. Consumers should also test keyboard focus and touch behavior for their usage context.
+Projected trigger content receives `aria-describedby` through a wrapper. CSS displays the bubble on hover, focus within the component, or when `visible` is true. Consumers should also test keyboard focus and touch behavior for their usage context.
 
 ### 7.11 Menu item
 
-**Import:** `MenuItemComponent`  
+**Import:** `MenuItemComponent`
 **Selector:** `button[dsMenuItem]`
 
 | Input | Type | Default |
@@ -443,7 +448,7 @@ The host receives `role="menuitem"`. Use inside an element with `role="menu"`. T
 
 ### 7.12 List item
 
-**Import:** `ListItemComponent`  
+**Import:** `ListItemComponent`
 **Selector:** `button[dsListItem]`
 
 | Input | Type | Default |
@@ -463,7 +468,7 @@ The component has projection slots selected by `[avatar]`, `[title]`, and `[trai
 
 ### 7.13 Search bar
 
-**Import:** `SearchBarComponent`  
+**Import:** `SearchBarComponent`
 **Selector:** `ds-search-bar`
 
 | Input / output | Type | Default / payload |
@@ -480,7 +485,7 @@ The component has projection slots selected by `[avatar]`, `[title]`, and `[trai
 
 ### 7.14 Search panel
 
-**Import:** `SearchPanelComponent`  
+**Import:** `SearchPanelComponent`
 **Selector:** `ds-search-panel`
 
 | Input / output | Type | Default / payload |
@@ -510,7 +515,7 @@ Pass real results explicitly in production. An empty array intentionally display
 
 ### 7.15 Date picker field
 
-**Import:** `DatePickerComponent`  
+**Import:** `DatePickerComponent`
 **Selector:** `ds-date-picker`
 
 | Input / output | Type | Default / payload |
@@ -526,7 +531,7 @@ This component is a styled text field. It does not parse, validate, localize, or
 
 ### 7.16 Date calendar
 
-**Import:** `DateCalendarComponent`  
+**Import:** `DateCalendarComponent`
 **Selector:** `ds-date-calendar`
 
 | Input / output | Type | Default / payload |
@@ -540,14 +545,14 @@ The present calendar is a fixed March demonstration: month labels, the 42-day gr
 
 ### 7.17 Time picker field
 
-**Import:** `TimePickerComponent`  
+**Import:** `TimePickerComponent`
 **Selector:** `ds-time-picker`
 
 Its API mirrors the date field: `label`, `placeholder`, `value`, `error`, `disabled`, and `valueChange`. The default placeholder is `HH : MM`. Values are emitted as unparsed strings.
 
 ### 7.18 Time clock
 
-**Import:** `TimeClockComponent`  
+**Import:** `TimeClockComponent`
 **Selector:** `ds-time-clock`
 
 | Input | Type | Default |
@@ -563,7 +568,7 @@ The dial calculates twelve item positions at 30-degree intervals. Selecting an i
 
 ### 7.19 Toolbar
 
-**Import:** `ToolbarComponent`  
+**Import:** `ToolbarComponent`
 **Selector:** `ds-toolbar`
 
 | Input | Type | Default |
@@ -697,7 +702,9 @@ The resulting archive is written to `dist/ailabs-design-system-<version>.tgz`.
 npm run build:pages
 ```
 
-This builds the showcase with the base href `/Ailabs-DesignSystem/`, matching the configured live demo path. Publish the contents of `dist/playground/browser/` through the repository's preferred GitHub Pages workflow.
+This builds the showcase with the base href `/Ailabs-DesignSystem/`, matching the configured live demo path. The existing `.github/workflows/deploy-pages.yml` runs on pushes to `main` or manual dispatch. It uses Node 22, runs `npm ci` and `npm run build:pages`, copies `index.html` to `404.html`, uploads `dist/playground/browser/`, and deploys through the `github-pages` environment. The workflow grants `contents: read`, `pages: write`, and `id-token: write`; concurrency group `pages` cancels older in-progress runs.
+
+Set repository Settings > Pages > Source to GitHub Actions. The workflow does not publish npm or synchronize Figma, and it contains no library-build or test job. See the companion guide for the complete commit, pull request, deployment, and release sequence and [GitHub Pages configuration](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 For deployment at a different subpath, replace the base href:
 
@@ -828,7 +835,7 @@ This is a known prototype limitation. The current calendar displays a fixed Marc
 
 ## 16. Known limitations and roadmap priorities
 
-The most important gaps before a production registry release are:
+The most important production-hardening gaps are:
 
 1. No automated unit, accessibility, visual, or end-to-end test suite.
 2. Date Calendar is fixed to a March sample and lacks real navigation, parsing, localization, and complete keyboard support.
@@ -857,6 +864,61 @@ For every release or significant change:
 - Record breaking changes and migration notes.
 - Publish only artifacts produced from a clean, reviewed commit.
 
+## 18. Installation schematic and package contract
+
+The `ng-add` schematic is registered in `schematics/collection.json` and implemented in `schematics/ng-add/index.cjs`. Its optional `project` string chooses one application project; without it, all application projects are considered. It reads `/angular.json`, supports `architect.build` or `targets.build`, and prepends the combined stylesheet to base build options. It recognizes existing string entries and objects whose `input` matches the stylesheet, avoiding duplicates.
+
+It fails for a missing workspace file, an unknown/non-application target, or a workspace with no application projects. A project without build options is skipped with a warning. It does not modify TypeScript imports, inject components, add themes, update test targets, or handle configuration-specific style overrides. It parses JSON directly, so nonstandard JSON comments are not supported.
+
+The library entry point is `src/public-api.ts`. Production compilation uses partial Angular compilation through `ng-packagr`. `ng-package.json` copies CSS into `styles` and the schematic folder into `schematics`. The generated manifest supplies Angular package exports; source package subpaths expose `styles.css`, `tokens.css`, and `components.css`. Inspect the generated manifest before publishing.
+
+CSS is marked as a side effect in package metadata. `tslib` is a runtime dependency. Angular common/core are peers constrained to `>=22.0.0 <23.0.0`. The showcase additionally installs the platform/browser/compiler toolchain, RxJS, and Zone.js. There is no backend service or runtime environment file to configure.
+
+## 19. Integration details and implementation boundaries
+
+### 19.1 Form controls and state
+
+The custom input, checkbox, switch, radio, date field, and time field components expose inputs and event emitters, not `ControlValueAccessor`. Direct `formControlName` and `ngModel` integration is not implemented. Use explicit bindings or build a forms adapter. Pass boolean inputs using property binding.
+
+For radio groups, keep one selected value in the parent and update it from each option's `checkedChange`. Native same-name grouping manages browser selection, but it does not update every sibling component's input property or your parent model automatically.
+
+```html
+<ds-radio name="model" value="fast" [checked]="model === 'fast'"
+  (checkedChange)="model = 'fast'">Fast</ds-radio>
+<ds-radio name="model" value="smart" [checked]="model === 'smart'"
+  (checkedChange)="model = 'smart'">Smart</ds-radio>
+```
+
+Initialize `model = 'fast'` in the parent and import `RadioComponent`.
+
+### 19.2 Search and toolbar composition
+
+Search components provide local UI and outputs; they do not call an API, filter a remote data source, or provide speech recognition. Wire search, voice, back, and result selection to application behavior. SearchBar uses a form internally, so avoid nesting it inside another form.
+
+Toolbar content is projected. Its variants do not implement dragging, viewport anchoring, or editor commands. Consumer buttons need handlers and labels. Roving keyboard focus for a complete composite toolbar is not implemented.
+
+### 19.3 Browser and accessibility boundaries
+
+The showcase accesses `window`, `document`, local storage, and IntersectionObserver directly; it has no SSR or hydration configuration. Tooltip descriptions are attached to a wrapper, so verify that the actual interactive trigger gets the intended accessible description. The checkbox models indeterminate appearance and `aria-checked`, but does not bind the native input's `indeterminate` property. Validate mixed-state behavior for the target assistive technologies.
+
+The hero View on GitHub button has no handler; the header GitHub link is functional. Clipboard calls have no user-facing error handling. Theme persistence exists only in the showcase; consumers implement their own theme control.
+
+## 20. Design-to-release operating model
+
+| Artifact | Source of truth | How it changes |
+|---|---|---|
+| Figma designs | Linked Figma source file | Edit main assets and publish library updates |
+| Tokens | CSS values and TypeScript metadata | Manually update both and compare with design |
+| Angular API | Component source and public barrel | Implement, review, build, package, and test |
+| GitHub source | Reviewed commits on main | Branch, pull request, review, merge |
+| Live showcase | Pages workflow artifact | Push to main or manual workflow dispatch |
+| npm package | Built release archive | Explicit authenticated package publication |
+| Consumer apps | Their source and lockfiles | Install a selected release and test migrations |
+
+No automatic Figma import/export pipeline, token generator, npm release workflow, or Code Connect mapping files are present. The README's synchronization description reflects intended design alignment, not an implemented sync service. Figma publication does not update CSS, and pushing GitHub source does not update npm consumers.
+
+Use the companion Step-by-Step Guide for complete procedures with commands, permissions, expected results, and recovery. Its npm publication example builds and tests an archive from a reviewed commit, publishes that archive, and records the matching Git tag. Version numbers in release examples must be checked against the registry before use.
+
 ## Appendix A. Public exports
 
 The barrel file exports:
@@ -878,6 +940,7 @@ The barrel file exports:
 - `ToolbarComponent`, `ToolbarTone`, `ToolbarVariant`
 - `TooltipComponent`, `TooltipPosition`
 - Token metadata: `colorRamps`, `semanticColorGroups`, `spacing`, `radii`, and `strokes`
+- Token interfaces: `ColorToken` and `ColorRamp`
 
 ## Appendix B. Configuration reference
 
@@ -904,3 +967,11 @@ This order is intentional: token definitions precede component rules, and showca
 ---
 
 **Document ownership:** Keep this document synchronized with component source, `package.json`, and `angular.json`. If code and documentation disagree, the checked-in source code is the operational authority.
+
+## Appendix C. Verification and source references
+
+The component APIs and operating instructions were reviewed against the local source at commit `88d2cc8`. The library build completed successfully during documentation preparation. The Pages build also passed, producing a 307.72 kB initial bundle (75.15 kB estimated transfer). It required execution outside the restricted sandbox after sandboxed runs exited abnormally. These checks used the existing installed dependencies; a fresh npm ci and consumer installation were not run. No live Figma publication, GitHub push, npm publication, or fresh consumer installation was performed as part of this documentation task.
+
+Primary repository references: `src/app/design-system/*.component.ts`, `src/app/design-system/index.ts`, `src/public-api.ts`, `src/app/app.component.*`, `src/design-system/tokens.*`, `src/design-system/components.css`, `package.json`, `angular.json`, `ng-package.json`, `tsconfig*.json`, `schematics/ng-add/*`, and `.github/workflows/deploy-pages.yml`.
+
+External workflow sources, consulted 22 September 2026, are linked in the relevant sections and in the companion guide. Platform permissions and release availability should be rechecked at the time of use.
