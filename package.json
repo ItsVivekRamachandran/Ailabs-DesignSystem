@@ -1,6 +1,6 @@
 {
   "name": "ailabs-design-system",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Standalone Angular components and design tokens for AI product interfaces.",
   "type": "module",
   "sideEffects": [
