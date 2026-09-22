@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/lib",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": []
+  },
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/main.ts",
+    "src/app/app.component.ts"
+  ],
+  "include": [
+    "src/public-api.ts",
+    "src/app/design-system/**/*.ts",
+    "src/design-system/tokens.ts"
+  ]
+}

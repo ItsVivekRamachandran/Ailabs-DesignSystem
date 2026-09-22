@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "./dist/ailabs-design-system",
+  "deleteDestPath": true,
+  "assets": [
+    {
+      "glob": "**/*.css",
+      "input": "src/design-system",
+      "output": "styles"
+    },
+    {
+      "glob": "**/*",
+      "input": "schematics",
+      "output": "schematics"
+    }
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

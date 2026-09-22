@@ -21,8 +21,8 @@ The Angular component layer includes every family planned in Figma:
 - Date Picker with Calendar views
 - Time Picker with Dial and Input views
 
-All components are standalone Angular components and are exported from
-`src/app/design-system/index.ts`.
+All components are standalone Angular components and are exported by the
+`ailabs-design-system` package.
 
 ## Documentation
 
@@ -31,14 +31,25 @@ All components are standalone Angular components and are exported from
 
 ## Component usage
 
+Install and configure the package with Angular CLI:
+
+```bash
+ng add ailabs-design-system
+```
+
+This installs the package and adds `ailabs-design-system/styles.css` to every
+Angular application in the workspace. Restart a running development server
+after installation.
+
 ```ts
+import { Component } from '@angular/core'
 import {
   ButtonComponent,
   CheckboxComponent,
   DatePickerComponent,
   SearchBarComponent,
   ToolbarComponent,
-} from './design-system'
+} from 'ailabs-design-system'
 
 @Component({
   standalone: true,
@@ -58,19 +69,49 @@ import {
 export class ExampleComponent {}
 ```
 
-## Getting started
+If the package was installed with `npm install` instead of `ng add`, load the
+design-system styles once in the consuming application's `angular.json`:
+
+```json
+{
+  "styles": [
+    "ailabs-design-system/styles.css",
+    "src/styles.css"
+  ]
+}
+```
+
+## Build and install the package
 
 ```bash
 npm install
-npm start
+npm run build
+npm run pack
+```
+
+The package build is written to `dist/ailabs-design-system`, and `npm run pack`
+also creates `dist/ailabs-design-system-0.1.0.tgz`. Install that archive in
+another Angular 22 project:
+
+```bash
+npm install /absolute/path/to/itsproject/dist/ailabs-design-system-0.1.0.tgz
+```
+
+For local iteration, you can install the unpacked output instead:
+
+```bash
+npm install /absolute/path/to/itsproject/dist/ailabs-design-system
 ```
 
 ## Commands
 
 - `npm start` — start the local component playground
-- `npm run build` — type-check and build for production
+- `npm run build` — build the installable Angular library
+- `npm run pack` — build and create an installable `.tgz` archive
+- `npm run build:demo` — build the component playground
 - `npm run build:pages` — build with the GitHub Pages base path
-- `npm run watch` — rebuild continuously during development
+- `npm run watch` — rebuild the library continuously during development
+- `npm run watch:demo` — rebuild the playground continuously during development
 
 ## Structure
 
@@ -80,6 +121,7 @@ src/
 │   ├── design-system/  Reusable standalone Angular components
 │   └── app.component.* Documentation playground
 ├── design-system/      Global tokens and component styles
+├── public-api.ts       Installable package exports
 ├── main.ts             Angular bootstrap
 └── styles.css          Playground layout and responsive styles
 ```

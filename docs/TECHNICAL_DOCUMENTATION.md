@@ -21,7 +21,7 @@ This document is intended for:
 - **Design-system maintainers**, who need to understand the token and styling architecture.
 - **Release engineers**, who build and deploy the static site.
 
-> **Current packaging status:** This repository is an Angular application and its package is marked `private`. It does not currently contain an Angular library build target or a publishable npm package. The site's “npm install @ailabs/design-system” copy action is demonstrative. Until library packaging is added, consume components from the repository source or deploy the showcase application.
+> **Packaging status:** The repository contains both the showcase application and an Angular Package Format library. `npm run build` creates the installable package in `dist/ailabs-design-system`, and `npm run pack` creates a distributable `.tgz` archive.
 
 ## 2. System at a glance
 
@@ -78,17 +78,20 @@ The application is deliberately small and uses no router, dependency-injection s
 .
 |-- angular.json                     Angular build and serve configuration
 |-- index.html                       Host HTML document and metadata
-|-- package.json                     Scripts and pinned application dependencies
+|-- package.json                     Package metadata, peer dependencies, and scripts
 |-- package-lock.json                Reproducible npm dependency graph
+|-- ng-package.json                  Angular library packaging configuration
 |-- tsconfig.json                    Strict TypeScript/Angular compiler settings
 |-- tsconfig.app.json                Application compilation entry point
+|-- tsconfig.lib*.json               Library compilation configurations
 |-- docs/
 |   `-- TECHNICAL_DOCUMENTATION.md   Maintainer and user manual
 |-- output/pdf/                      Distributable PDF documentation
 `-- src/
     |-- main.ts                      Browser bootstrap
+    |-- public-api.ts                Public package exports
     |-- styles.css                   Showcase/page layout and responsive rules
-    |-- assets/search/               Search component SVG icons
+    |-- assets/search/               Legacy source SVG references used by the showcase
     |-- design-system/
     |   |-- tokens.css               Runtime CSS custom properties and themes
     |   |-- tokens.ts                Typed token metadata used by the showcase
@@ -101,7 +104,7 @@ The application is deliberately small and uses no router, dependency-injection s
             `-- *.component.ts       Standalone Angular components
 ```
 
-Generated production files are written to `dist/ailabs-design-system/browser/` and should not be edited manually.
+Generated library files are written to `dist/ailabs-design-system/`; the showcase application is written to `dist/playground/browser/`. Generated files should not be edited manually.
 
 ## 4. Prerequisites and installation
 
@@ -133,11 +136,14 @@ Use `npm ci` in continuous integration and for clean reproducible installs. Use 
 |---|---|
 | `npm start` | Start the development server (`ng serve`). |
 | `npm run dev` | Alias for the development server. |
-| `npm run build` | Create an optimized production build. |
+| `npm run build` | Build the installable Angular library. |
+| `npm run pack` | Build the library and create a `.tgz` archive in `dist/`. |
+| `npm run build:demo` | Create an optimized showcase application build. |
 | `npm run build:pages` | Build with `/Ailabs-DesignSystem/` as the base URL for GitHub Pages. |
-| `npm run watch` | Continuously rebuild using the development configuration. |
+| `npm run watch` | Continuously rebuild the library using the development configuration. |
+| `npm run watch:demo` | Continuously rebuild the showcase application. |
 
-No repository scripts currently exist for unit tests, end-to-end tests, linting, formatting, Storybook, or npm package publication.
+No repository scripts currently exist for unit tests, end-to-end tests, linting, formatting, or Storybook.
 
 ## 5. Using the showcase
 
@@ -175,9 +181,20 @@ Date Calendar, Time Clock, Card, Tooltip, and Search Panel are demonstrated in t
 
 ## 6. Consuming components in Angular
 
+Install the package through Angular CLI so its `ng-add` schematic can register
+the required global stylesheet automatically:
+
+```bash
+ng add ailabs-design-system
+```
+
+When targeting one application in a multi-project workspace, pass
+`--project <application-name>`. Restart a running development server after the
+workspace configuration changes.
+
 ### 6.1 Import pattern
 
-All components are standalone and are re-exported from `src/app/design-system/index.ts`.
+All components are standalone and are exported from the `ailabs-design-system` package.
 
 ```ts
 import { Component } from '@angular/core'
@@ -186,7 +203,7 @@ import {
   CheckboxComponent,
   InputComponent,
   ToolbarComponent,
-} from './design-system'
+} from 'ailabs-design-system'
 
 @Component({
   selector: 'app-example',
@@ -218,25 +235,24 @@ Angular's two-way binding syntax works where a component exposes an input and a 
 
 ### 6.2 Required global styles
 
-Component templates rely on global CSS classes and variables. A consuming Angular application must load these files in this order:
+Component templates rely on global CSS classes and variables. `ng add` registers the combined stylesheet automatically. When using `npm install` directly, add it to the consuming application's `angular.json` manually:
 
 ```json
 {
   "styles": [
-    "src/design-system/tokens.css",
-    "src/design-system/components.css",
+    "ailabs-design-system/styles.css",
     "src/styles.css"
   ]
 }
 ```
 
-Only the first two files are required for the reusable component layer. `src/styles.css` belongs to the documentation showcase.
+The package also exposes `ailabs-design-system/tokens.css` and `ailabs-design-system/components.css` separately when an application needs explicit ordering or customization. The consumer's own `src/styles.css` remains application-specific.
 
 Because component styles are global, class names use the `ds-` prefix to reduce collisions. There is no Shadow DOM or Angular style encapsulation around the shared CSS.
 
 ### 6.3 Asset paths
 
-Search components reference icons at `assets/search/*.svg`. A consuming app must copy `src/assets` into its output at `/assets`, or update the component templates to use the consumer's asset strategy.
+Search icons are embedded in the component templates, so consumers do not need to configure asset copying.
 
 ## 7. Component API reference
 
@@ -654,7 +670,7 @@ The repository does not currently include automated accessibility tests or a pub
 
 ## 11. Building and deployment
 
-### 11.1 Production build
+### 11.1 Library build
 
 ```bash
 npm ci
@@ -664,15 +680,16 @@ npm run build
 Output is written to:
 
 ```text
-dist/ailabs-design-system/browser/
+dist/ailabs-design-system/
 ```
 
-The production configuration enables optimization, license extraction defaults, and filename hashing. Budgets are:
+This output follows Angular Package Format and contains the FESM bundle, type declarations, package manifest, README, and exported stylesheets. Create an installable archive with:
 
-- Initial bundle warning at 500 kB and error at 1 MB.
-- Any component style warning at 8 kB and error at 12 kB.
+```bash
+npm run pack
+```
 
-The build verified on 21 September 2026 completed successfully with a 307.30 kB raw initial bundle and a 75.10 kB estimated transfer size.
+The resulting archive is written to `dist/ailabs-design-system-<version>.tgz`.
 
 ### 11.2 GitHub Pages build
 
@@ -680,15 +697,15 @@ The build verified on 21 September 2026 completed successfully with a 307.30 kB 
 npm run build:pages
 ```
 
-This sets the base href to `/Ailabs-DesignSystem/`, matching the configured live demo path. Publish the contents of `dist/ailabs-design-system/browser/` through the repository's preferred GitHub Pages workflow.
+This builds the showcase with the base href `/Ailabs-DesignSystem/`, matching the configured live demo path. Publish the contents of `dist/playground/browser/` through the repository's preferred GitHub Pages workflow.
 
 For deployment at a different subpath, replace the base href:
 
 ```bash
-npx ng build --base-href /your-subpath/
+npx ng build ailabs-design-system --base-href /your-subpath/
 ```
 
-For a root-domain deployment, the regular `npm run build` output is appropriate.
+For a root-domain showcase deployment, use `npm run build:demo`.
 
 ### 11.3 Static hosting requirements
 
@@ -722,17 +739,15 @@ For a root-domain deployment, the regular `npm run build` output is appropriate.
 - Host classes encode variants and state for global CSS.
 - Component types are exported when consumers need them.
 
-### 12.3 Turning the source into a publishable library
+### 12.3 Publishing the library
 
-To distribute `@ailabs/design-system`, create an Angular library project rather than publishing this application package directly. The migration should:
+The Angular library target is ready for local archive installation. Before publishing it to a registry:
 
-1. Generate a library with Angular CLI and move reusable components into its source tree.
-2. Define a public API that exports components and types.
-3. Package token and component CSS as documented style entry points or component-scoped styles.
-4. Move SVGs into an explicit asset contract or replace path-based assets with inline/component-owned icons.
-5. Add peer dependencies for compatible Angular versions.
-6. Add library builds, unit tests, linting, package metadata, versioning, and release automation.
-7. Publish only after replacing the showcase's demonstrative install command with the real package name and tested installation instructions.
+1. Confirm ownership and availability of the `ailabs-design-system` npm name, or change it to an owned scope.
+2. Add a license, changelog, and release policy.
+3. Update the semantic version and document breaking changes.
+4. Run a clean install, package build, archive installation test, and showcase build.
+5. Publish only the contents generated in `dist/ailabs-design-system`.
 
 ## 13. Quality assurance
 
@@ -745,6 +760,7 @@ Run before every merge:
 ```bash
 npm ci
 npm run build
+npm run build:demo
 ```
 
 Then manually check:
@@ -786,13 +802,9 @@ If network features, analytics, or authentication are added later, update the th
 
 Install a Node release accepted by Angular CLI 22.1.8, then reinstall dependencies with `npm ci`.
 
-### Search icons are missing
-
-Confirm `src/assets` is included in the Angular `assets` configuration and that the application base href matches the deployment path.
-
 ### Components render without styling
 
-Load `tokens.css` before `components.css`. Components depend on global CSS variables and class rules.
+Add `ailabs-design-system/styles.css` to the consumer application's `angular.json`. Components depend on the packaged CSS variables and class rules.
 
 ### Theme does not persist
 
@@ -804,7 +816,7 @@ Run on localhost or HTTPS, allow clipboard access, and check browser developer t
 
 ### GitHub Pages loads a blank or unstyled page
 
-Use `npm run build:pages` and publish the `browser` directory contents. Confirm the repository/subpath casing exactly matches `/Ailabs-DesignSystem/`.
+Use `npm run build:pages` and publish `dist/playground/browser/`. Confirm the repository/subpath casing exactly matches `/Ailabs-DesignSystem/`.
 
 ### Calendar navigation does not change month
 
@@ -816,20 +828,19 @@ This is a known prototype limitation. The current calendar displays a fixed Marc
 
 ## 16. Known limitations and roadmap priorities
 
-The most important gaps before production library distribution are:
+The most important gaps before a production registry release are:
 
-1. No publishable Angular library/package target despite the install command shown in the UI.
-2. No automated unit, accessibility, visual, or end-to-end test suite.
-3. Date Calendar is fixed to a March sample and lacks real navigation, parsing, localization, and complete keyboard support.
-4. Time Clock lacks outputs and complete input-mode behavior.
-5. Tabs and menu items provide semantics/styles but not composite-widget keyboard management.
-6. Search Panel displays demo results when its `results` input is empty and has no explicit loading or empty states.
-7. Clipboard failures are not surfaced to users.
-8. CSS and TypeScript token definitions are manually duplicated.
-9. No formal supported-browser matrix or automated browser compatibility testing exists.
-10. No license file, contribution guide, changelog, or release policy is present in the repository.
+1. No automated unit, accessibility, visual, or end-to-end test suite.
+2. Date Calendar is fixed to a March sample and lacks real navigation, parsing, localization, and complete keyboard support.
+3. Time Clock lacks outputs and complete input-mode behavior.
+4. Tabs and menu items provide semantics/styles but not composite-widget keyboard management.
+5. Search Panel displays demo results when its `results` input is empty and has no explicit loading or empty states.
+6. Clipboard failures are not surfaced to users.
+7. CSS and TypeScript token definitions are manually duplicated.
+8. No formal supported-browser matrix or automated browser compatibility testing exists.
+9. No license file, contribution guide, changelog, or release policy is present in the repository.
 
-Recommended priority order: package architecture, automated tests, date/time completion, accessibility hardening, token generation, then release governance.
+Recommended priority order: automated tests, date/time completion, accessibility hardening, token generation, then release governance.
 
 ## 17. Maintenance checklist
 
@@ -842,7 +853,7 @@ For every release or significant change:
 - Verify component APIs and update this document.
 - Check tokens in light and dark modes.
 - Test keyboard and screen-reader behavior.
-- Confirm the live demo base path and search assets.
+- Confirm the live demo base path and package stylesheet loading.
 - Record breaking changes and migration notes.
 - Publish only artifacts produced from a clean, reviewed commit.
 
@@ -866,6 +877,7 @@ The barrel file exports:
 - `TimeClockComponent`, `TimePickerComponent`, `ClockMode`, `ClockView`
 - `ToolbarComponent`, `ToolbarTone`, `ToolbarVariant`
 - `TooltipComponent`, `TooltipPosition`
+- Token metadata: `colorRamps`, `semanticColorGroups`, `spacing`, `radii`, and `strokes`
 
 ## Appendix B. Configuration reference
 

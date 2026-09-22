@@ -224,7 +224,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   async copyInstall(): Promise<void> {
-    await navigator.clipboard.writeText('npm install @ailabs/design-system')
+    await navigator.clipboard.writeText('npm install ailabs-design-system')
     this.copied.set(true)
     window.setTimeout(() => this.copied.set(false), 1800)
   }

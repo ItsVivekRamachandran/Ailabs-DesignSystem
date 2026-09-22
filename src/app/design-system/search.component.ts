@@ -42,11 +42,11 @@ let nextSearchId = 0
       <span class="ds-search-bar__trailing">
         @if (value) {
           <button class="ds-search__action" type="button" aria-label="Clear search" (click)="clearSearch()">
-            <img src="assets/search/x-circle.svg" alt="" />
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15 9 9 15M9 9l6 6M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" /></svg>
           </button>
         }
         <button dsButton class="ds-search__mini" variant="primary" size="sm" [iconOnly]="true" type="submit" aria-label="Search">
-          <img src="assets/search/search.svg" alt="" />
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" /></svg>
         </button>
       </span>
     </form>
@@ -92,7 +92,7 @@ export class SearchBarComponent {
   template: `
     <form class="ds-search-panel__header" role="search" (submit)="submit($event)">
       <button class="ds-search__action ds-search-panel__leading" type="button" aria-label="Go back" (click)="back.emit()">
-        <img src="assets/search/arrow-left.svg" alt="" />
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m12 5-7 7 7 7M5 12h14" /></svg>
       </button>
       <input
         class="ds-search-panel__input"
@@ -106,19 +106,19 @@ export class SearchBarComponent {
       <span class="ds-search-panel__trailing">
         @if (configuration === 'input') {
           <button class="ds-search__action" type="button" aria-label="Clear search" (click)="clearSearch()">
-            <img src="assets/search/x-circle.svg" alt="" />
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15 9 9 15M9 9l6 6M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" /></svg>
           </button>
           <button class="ds-search__action" type="button" aria-label="Start voice search" (click)="voice.emit()">
-            <img src="assets/search/mic.svg" alt="" />
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 19v3M5 10v2a7 7 0 0 0 14 0v-2M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" /></svg>
           </button>
         } @else {
           <button dsButton class="ds-search__mini" variant="primary" size="sm" [iconOnly]="true" type="submit" aria-label="Search">
-            <img src="assets/search/search.svg" alt="" />
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" /></svg>
           </button>
         }
       </span>
     </form>
-    <img class="ds-search-panel__divider" src="assets/search/divider-docked.svg" alt="" />
+    <span class="ds-search-panel__divider" aria-hidden="true"></span>
     <div class="ds-search-panel__results" role="listbox" [attr.aria-label]="resultsLabel">
       @for (result of displayResults; track result.id) {
         <button class="ds-search-result" type="button" role="option" (click)="resultSelect.emit(result)">

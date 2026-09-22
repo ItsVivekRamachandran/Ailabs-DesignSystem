@@ -1,28 +1,51 @@
 {
   "name": "ailabs-design-system",
-  "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "Standalone Angular components and design tokens for AI product interfaces.",
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "style": "styles/styles.css",
+  "schematics": "./schematics/collection.json",
+  "exports": {
+    "./styles.css": "./styles/styles.css",
+    "./tokens.css": "./styles/tokens.css",
+    "./components.css": "./styles/components.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "start": "ng serve",
-    "dev": "ng serve",
-    "build": "ng build",
-    "build:pages": "ng build --base-href /Ailabs-DesignSystem/",
-    "watch": "ng build --watch --configuration development"
+    "start": "ng serve ailabs-design-system",
+    "dev": "ng serve ailabs-design-system",
+    "build": "ng build ailabs-design-system-lib",
+    "build:library": "ng build ailabs-design-system-lib",
+    "build:demo": "ng build ailabs-design-system",
+    "build:pages": "ng build ailabs-design-system --base-href /Ailabs-DesignSystem/",
+    "watch": "ng build ailabs-design-system-lib --watch --configuration development",
+    "watch:demo": "ng build ailabs-design-system --watch --configuration development",
+    "pack": "npm run build && npm pack ./dist/ailabs-design-system --pack-destination ./dist"
   },
   "dependencies": {
-    "@angular/common": "22.1.7",
-    "@angular/compiler": "22.1.7",
-    "@angular/core": "22.1.7",
-    "@angular/platform-browser": "22.1.7",
-    "rxjs": "^7.8.2",
-    "tslib": "^2.8.1",
-    "zone.js": "~0.16.0"
+    "tslib": "^2.8.1"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=22.0.0 <23.0.0",
+    "@angular/core": ">=22.0.0 <23.0.0"
   },
   "devDependencies": {
     "@angular/build": "22.1.8",
     "@angular/cli": "22.1.8",
+    "@angular/common": "22.1.7",
+    "@angular/compiler": "22.1.7",
     "@angular/compiler-cli": "22.1.7",
+    "@angular/core": "22.1.7",
+    "@angular/platform-browser": "22.1.7",
+    "ng-packagr": "22.1.1",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.16.0",
     "typescript": "~6.0.2"
   }
 }

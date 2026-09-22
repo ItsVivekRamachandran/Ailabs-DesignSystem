@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/playground",
             "browser": "src/main.ts",
             "index": "index.html",
             "tsConfig": "tsconfig.app.json",
@@ -49,6 +50,30 @@
             "development": { "buildTarget": "ailabs-design-system:build:development" }
           },
           "defaultConfiguration": "development"
+        }
+      }
+    },
+    "ailabs-design-system-lib": {
+      "projectType": "library",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "ds",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "ng-package.json",
+            "tsConfig": "tsconfig.lib.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
