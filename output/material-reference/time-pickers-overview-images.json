@@ -1,0 +1,14 @@
+[
+  {
+    "alt": "Dial time picker dial and input time picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmcyz4dh2-01.png?alt=media&token=726495da-d131-42f3-a766-cd787c29a235"
+  },
+  {
+    "alt": "Time picker’s old color mappings. The selected hour of 7 and AM text is purple, on a purple background.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmcz00a3d-02.png?alt=media&token=195f2e65-d46e-466a-b952-e7cfa9761d48"
+  },
+  {
+    "alt": "Time picker's new color mappings. The selected hour of 7 and AM text is black, with different background colors.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmcz04x96-03.png?alt=media&token=a2f4ba54-7a25-4967-b3d9-bb113e40713e"
+  }
+]

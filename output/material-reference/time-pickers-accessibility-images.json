@@ -1,0 +1,18 @@
+[
+  {
+    "alt": "Time picker with active manual text input for hours.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2w3xxn-01.png?alt=media&token=84c832db-808d-448c-a8dd-9d89620c4d1f"
+  },
+  {
+    "alt": "Time picker dial selector specs, selecting hour 7.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2w61b9-02.png?alt=media&token=92a4708a-fda3-4fca-b285-153413dd00b4"
+  },
+  {
+    "alt": "Accessibility tags on the time picker's hour input field.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2w8i4o-03.png?alt=media&token=da4a19d6-ee3a-4eaf-bce3-256e3d0681b1"
+  },
+  {
+    "alt": "Accessibility tag on the time picker's dial selector.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2w9ugu-04.png?alt=media&token=07079a68-62a9-49fd-ab7f-2638edda3047"
+  }
+]

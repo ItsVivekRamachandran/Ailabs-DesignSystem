@@ -11,6 +11,7 @@ import {
   DatePickerComponent,
   DropdownComponent,
   InputComponent,
+  IconComponent,
   ListItemComponent,
   MenuItemComponent,
   RadioComponent,
@@ -38,6 +39,7 @@ import {
     DatePickerComponent,
   DropdownComponent,
     InputComponent,
+  IconComponent,
     ListItemComponent,
     MenuItemComponent,
     RadioComponent,
@@ -113,7 +115,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       case 'menu':
         return `<button dsMenuItem${this.playgroundSupporting() ? ' shortcut="⌘K"' : ''}${this.playgroundSelected() ? ' [active]="true"' : ''}${disabled}>Open command</button>`
       case 'list':
-        return `<button dsListItem title="AI workspace"${this.playgroundSupporting() ? ' supportingText="Updated moments ago"' : ''}${this.playgroundSelected() ? ' [selected]="true"' : ''}${disabled}>\n  <span avatar></span>\n  <span trailing>›</span>\n</button>`
+        return `<button dsListItem title="AI workspace"${this.playgroundSupporting() ? ' supportingText="Updated moments ago"' : ''}${this.playgroundSelected() ? ' [selected]="true"' : ''}${disabled}>\n  <span avatar></span>\n  <span trailing><ds-icon name="chevron_right" /></span>\n</button>`
       case 'dropdown':
         return `<ds-dropdown label="Workspace" [options]="workspaceOptions"${this.playgroundDisabled() ? ' [disabled]="true"' : ''} />`
       case 'toolbar':

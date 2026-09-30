@@ -1,0 +1,131 @@
+Skip to main content
+search
+material_design
+Home
+apps
+Get started
+code
+Develop
+book
+Foundations
+palette
+Styles
+add_circle
+Components
+pages
+Blog
+play_arrow
+pause
+dark_mode
+light_mode
+Time pickers
+Time pickers help people select and set a specific time
+Resources
+android
+flutter
+android
+info
+Overview
+style
+Specs
+design_services
+Guidelines
+accessibility_new
+Accessibility
+On this page
+Time pickers
+Availability & resources
+Differences from M2
+link
+Copy link
+
+Time pickers are modal and cover the main content
+
+Two variants: dial and input
+
+People can select hours, minutes, or periods of time
+
+Make sure time can easily be selected by hand on a mobile device
+
+link
+Copy link
+Time picker dial
+Time picker input
+link
+Copy link
+Availability & resources
+link
+Copy link
+Type	Resource	Status
+Design
+
+Design Kit (Figma)
+	
+Available
+
+Implementation
+
+Flutter
+	
+Available
+
+
+android
+Jetpack Compose
+	
+Available
+
+
+android
+Android Views (MDC-Android)
+	
+Available
+
+
+language
+Web
+	
+Unavailable
+link
+Copy link
+Differences from M2
+link
+Copy link
+Color: New color mappings and compatibility with dynamic color
+
+link
+Copy link
+
+M2: Time pickers had different color mappings
+
+M3: Time pickers have new color mappings compatible with dynamic color
+
+arrow_left_alt
+Previous
+Date pickers: Overview
+Up next
+arrow_right_alt
+Time pickers: Specs
+material_design
+
+Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.
+
+Social
+GitHub
+X
+YouTube
+Blog RSS
+Libraries
+Android
+Compose
+Flutter
+Web
+More Google sites
+Google Design
+Archived versions
+Material Design 1
+Material Design 2
+Privacy Policy
+Terms of Service
+Join research studies
+Feedback

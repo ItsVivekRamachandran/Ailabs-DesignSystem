@@ -1,18 +1,17 @@
+import { IconComponent } from './icon.component'
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 
 let nextInputId = 0
 
 @Component({
   selector: 'ds-input, ds-text-field',
-  standalone: true,
+  standalone: true, imports: [IconComponent],
   host: { class: 'ds-field' },
   template: `
     @if (label) { <label class="ds-field__label" [class.ds-field__label--error]="error" [for]="inputId">{{ label }}</label> }
     <span class="ds-input-wrap">
       @if (icon === 'search') {
-        <svg class="ds-input__icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
-        </svg>
+        <ds-icon class="ds-input__icon" name="search" />
       }
       <input class="ds-input" [class.ds-input--error]="error" [id]="inputId" [type]="type" [attr.aria-label]="ariaLabel || null" [required]="required" [attr.autocomplete]="autocomplete || null" [placeholder]="placeholder" [value]="value" [disabled]="disabled" [attr.aria-invalid]="error ? 'true' : null" [attr.aria-describedby]="hint || error ? inputId + '-hint' : null" (input)="onInput($event)" />
     </span>

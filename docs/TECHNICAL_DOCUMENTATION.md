@@ -61,7 +61,7 @@ Browser
                  +-- global CSS token layer
                  +-- component CSS layer
                  +-- showcase layout CSS
-                 +-- local SVG search assets
+                 +-- local Material Symbols SVG assets
 ```
 
 The application is deliberately small and uses no router, dependency-injection services, NgModules, or HTTP client. `AppComponent` is the composition root. Each design-system component is standalone and uses `ChangeDetectionStrategy.OnPush`.
@@ -257,7 +257,7 @@ Because component styles are global, class names use the `ds-` prefix to reduce 
 
 ### 6.3 Asset paths
 
-Search icons are embedded in the component templates, so consumers do not need to configure asset copying for those components. Playground snippets can contain SVG symbol references defined only in the showcase, including `#icon-sparkles` and toolbar symbols. Supply equivalent symbols or replace those icons in the consuming app.
+`IconComponent` renders Material Symbols from the local SVG registry, without a remote font or asset request. The package also includes the source SVGs and their license. Playground snippets can contain SVG symbol references defined only in the showcase, including `#icon-sparkles` and toolbar symbols. Use `ds-icon` in consuming apps or supply equivalent symbols.
 
 ## 7. Component API reference
 
@@ -481,56 +481,43 @@ Search Bar and Search Panel were removed from the package, demo, and Figma libra
 
 ### 7.15 Date picker field
 
-**Import:** `DatePickerComponent`
-**Selector:** `ds-date-picker`
+**Import:** `DatePickerComponent`; **selector:** `ds-date-picker`.
 
-| Input / output | Type | Default / payload |
-|---|---|---|
-| `label` | `string` | `'Label'` |
-| `placeholder` | `string` | `'MM / DD / YYYY'` |
-| `value` | `string` | `''` |
-| `error` | `string` | `''` |
-| `disabled` | `boolean` | `false` |
-| `valueChange` | `EventEmitter<string>` | Unparsed input string |
+Inputs: `label` (`Date`), `placeholder`, `value`, `error`, `disabled`, `min`, `max`, and `presentation` (`auto`, `docked`, `modal`). `auto` uses a docked non-modal popup at 600px and wider and a centered modal below that breakpoint. `min` and `max` accept the same date formats as the input. This is a single-date picker, not a range picker.
 
-Clicking the field, Enter, or Arrow Down opens a native modal calendar dialog positioned by the field (centered on narrow screens). Selecting a date emits `MM / DD / YYYY` and closes the dialog. Escape, Cancel, or outside click dismisses without changing the value and restores focus. Typed values are emitted directly; application validation and localization remain consumer responsibilities.
+Pointer clicks on the field preserve the product's requested opening behavior. A separate calendar button and Alt+ArrowDown open the picker for keyboard users. Merely focusing the text input does not open it. Direct entry accepts month/day/year separated by slashes, dashes, dots, or spaces and ISO year-first dates. Formatting occurs on Enter/blur, never while typing. Invalid dates, including February 30, are rejected. `valueChange` emits the normalized `MM / DD / YYYY` string after valid direct entry or confirmation; clearing emits an empty string.
+
+Calendar clicks change a draft. OK commits it; Cancel/Escape/outside click discard it. Enter on a focused date commits it. Modal dialogs contain focus and return it to the opener. Docked pickers leave the field and page available. The manual-entry icon switches to a labelled date input with validation. At widths below 360px, input mode avoids shrinking calendar targets. A date format hint is associated with the field.
 
 ### 7.16 Date calendar
 
-**Import:** `DateCalendarComponent`
-**Selector:** `ds-date-calendar`
+**Import:** `DateCalendarComponent`; **selector:** `ds-date-calendar`.
 
-| Input / output | Type | Default / payload |
-|---|---|---|
-| `view` | `'calendar' \| 'months' \| 'years'` | `'calendar'` |
-| `selectedDay` | `number` | `24` |
-| `selectedYear` | `number` | `2024` |
-| `selectedDayChange` | `EventEmitter<number>` | Selected current-month day |
+Inputs: `view` (`calendar`, `months`, `years`), `selectedDay`, zero-based `selectedMonth`, `selectedYear`, `min`, and `max`. Selection defaults to today. Outputs: `dateChange: Date`, `selectedDayChange`, `selectedMonthChange`, `selectedYearChange`, `confirm: Date`, and `viewChange`.
 
-The calendar calculates a 42-day grid for `selectedMonth` (zero-based) and `selectedYear`, with previous/next month and month/year selection. `dateChange` emits a Date; day/month/year outputs expose selection changes. Arrow keys move among visible dates, Home/End move within a week, and PageUp/PageDown change month. The picker resets a cancelled draft when reopened.
+The displayed month is independent of the selected draft, so browsing months never silently changes a value. The calendar calculates the necessary 4–6 week rows, uses 48px date targets with 40px indicators, distinguishes today from the selected date, and provides grid/row/columnheader semantics and full date names. Month and year menus are separate. Years are scrollable, and month swipes are supported.
+
+Arrow keys cross month boundaries; Home/End move to the first/last day of the month; PageUp/PageDown move one month; Shift+PageUp/PageDown move one year; Shift+M and Shift+Y open month/year choices. Enter confirms. Bounds disable dates outside `min`/`max`.
 
 ### 7.17 Time picker field
 
-**Import:** `TimePickerComponent`
-**Selector:** `ds-time-picker`
+**Import:** `TimePickerComponent`; **selector:** `ds-time-picker`.
 
-Its API mirrors the date field. Default label: `Time`; placeholder: `HH : MM AM`. Click, Enter, or Arrow Down opens a modal dial overlay. Keyboard switches to numeric hour/minute entry. Apply emits `HH : MM AM/PM`; Cancel, Escape, or outside click discards the draft and returns focus. Typed values are emitted directly for application validation.
+Inputs: `label` (`Time`), `placeholder`, `value`, `error`, `disabled`, `hourCycle` (`12` default or `24`), and `initialMode` (`dial` default or `input`). `valueChange` emits `HH : MM AM/PM` in 12-hour mode or `HH : MM` in 24-hour mode.
 
-### 7.18 Time clock
+Clicking the field or schedule icon, or pressing Alt+ArrowDown, opens a centered modal above a 32% scrim. Keyboard users can also type directly in the field and validate with Enter/blur. The modal uses separate hour/minute controls, AM/PM to their right, a 256px clock with 48px targets, a keyboard/clock icon toggle, and text-only Cancel/OK actions. Selecting an hour advances to minutes. The dial supports pointer dragging and minute precision; the keyboard fields support exact numeric entry and arrow increments.
 
-**Import:** `TimeClockComponent`
-**Selector:** `ds-time-clock`
+OK validates and commits; Cancel/Escape/outside click discard the draft and return focus. Empty or out-of-range numeric entries show an associated error. Tab/Shift+Tab remain inside the modal. When height is below 620px or width below 360px, input mode replaces the dial to avoid shrinking or scrolling it. The 24-hour variant uses input mode and omits AM/PM. This implementation does not provide a 24-hour dual-ring dial.
 
-| Input | Type | Default |
-|---|---|---|
-| `mode` | `'dial' \| 'input'` | `'dial'` |
-| `view` | `'hours' \| 'minutes'` | `'hours'` |
-| `hour` | `string` | `'09'` |
-| `minute` | `string` | `'30'` |
-| `period` | `'AM' \| 'PM'` | `'AM'` |
-| `error` | `string` | `''` |
+### 7.18 Time clock and local icons
 
-The dial calculates twelve item positions. `hourChange`, `minuteChange`, and `periodChange` expose edits. Input mode provides labelled numeric fields (hours 1–12, minutes 0–59). The parent picker checks validity before Apply.
+**Import:** `TimeClockComponent`; **selector:** `ds-time-clock`.
+
+Inputs: `mode`, `view`, `hour`, `minute`, `period`, `hourCycle`, and `error`. Outputs: `hourChange`, `minuteChange`, and `periodChange`. The picker owns draft/commit behavior; standalone clocks emit edits directly.
+
+`IconComponent` renders locally bundled official Google Material Symbols SVG paths. Use `<ds-icon name="schedule" />` inside a button with an accessible name. Icons are decorative (`aria-hidden=true`); labels belong to their controls. Original SVGs and Apache-2.0 license are in `src/assets/icons/material`, and included in the package. `scripts/generate-material-icons.mjs` regenerates the registry. No Google Fonts runtime request is used.
+
+References reviewed: [date overview](https://m3.material.io/components/date-pickers/overview), [specs](https://m3.material.io/components/date-pickers/specs), [guidelines](https://m3.material.io/components/date-pickers/guidelines), [accessibility](https://m3.material.io/components/date-pickers/accessibility); [time overview](https://m3.material.io/components/time-pickers/overview), [specs](https://m3.material.io/components/time-pickers/specs), [guidelines](https://m3.material.io/components/time-pickers/guidelines), [accessibility](https://m3.material.io/components/time-pickers/accessibility); [Material Symbols](https://fonts.google.com/icons).
 
 ### 7.19 Toolbar
 
@@ -742,7 +729,7 @@ Then manually check:
 - Desktop and mobile widths.
 - Keyboard focus for every control.
 - Every playground component and copy action.
-- Dropdown mouse/keyboard selection, disabled options, dismissal, and picker Apply/Cancel.
+- Dropdown mouse/keyboard selection, disabled options, dismissal, and picker OK/Cancel.
 - Form error and disabled states.
 - Date and time prototype interactions.
 - GitHub Pages base-path asset loading.
@@ -793,27 +780,27 @@ Use `npm run build:pages` and publish `dist/playground/browser/`. Confirm the re
 
 ### Calendar navigation does not change month
 
-This is a known prototype limitation. The current calendar displays a fixed March grid and does not implement previous/next month logic.
+The calendar supports real month and year navigation. Check whether `min` or `max` bounds disable the requested month. Browsing changes the displayed month; the field value changes only when a date is confirmed.
 
 ### Time selection does not update the parent form
 
-`TimeClockComponent` currently changes only its internal inputs and exposes no outputs. Use `TimePickerComponent` for string entry or extend the clock with change events and a form-control contract.
+Bind `TimeClockComponent` outputs `hourChange`, `minuteChange`, and `periodChange` when using the clock directly. `TimePickerComponent` keeps overlay edits as a draft and emits `valueChange` on OK or valid direct entry. Cancel discards overlay edits.
 
 ## 16. Known limitations and roadmap priorities
 
 The most important production-hardening gaps are:
 
-1. No automated unit, accessibility, visual, or end-to-end test suite.
-2. Date Calendar is fixed to a March sample and lacks real navigation, parsing, localization, and complete keyboard support.
-3. Time Clock lacks outputs and complete input-mode behavior.
-4. Tabs and menu items provide semantics/styles but not composite-widget keyboard management.
+1. Playwright regression checks and token contrast checks exist; manual assistive-technology testing and a supported-browser test matrix remain necessary.
+2. Date Picker supports single-date selection and English formatting; date ranges and broader localization remain out of scope.
+3. Time Picker supports a 12-hour dial and 12/24-hour numeric entry; a dual-ring 24-hour dial is not implemented.
+4. Tabs provide arrow-key navigation; Menu Item still requires its parent to manage composite-widget keyboard behavior.
 5. Search components have been removed; migrate existing imports before upgrading.
 6. Clipboard failures are not surfaced to users.
 7. CSS and TypeScript token definitions are manually duplicated.
 8. No formal supported-browser matrix or automated browser compatibility testing exists.
 9. No license file, contribution guide, changelog, or release policy is present in the repository.
 
-Recommended priority order: automated tests, date/time completion, accessibility hardening, token generation, then release governance.
+Recommended priority order: assistive-technology and browser coverage, localization and additional picker modes, token generation, then release governance.
 
 ## 17. Maintenance checklist
 
@@ -894,7 +881,8 @@ The barrel file exports:
 - `CardComponent`
 - `CheckboxComponent`
 - `ChipComponent`, `ChipVariant`
-- `DateCalendarComponent`, `DatePickerComponent`, `CalendarView`
+- `DateCalendarComponent`, `DatePickerComponent`, `CalendarView`, `DatePickerPresentation`
+- `IconComponent`, `MaterialIconName`
 - `InputComponent` and alias `TextFieldComponent`
 - `ListItemComponent`
 - `MenuItemComponent`
@@ -902,7 +890,7 @@ The barrel file exports:
 - `DropdownComponent`, `DropdownOption`
 - `SwitchComponent`
 - `TabComponent`
-- `TimeClockComponent`, `TimePickerComponent`, `ClockMode`, `ClockView`
+- `TimeClockComponent`, `TimePickerComponent`, `ClockMode`, `ClockView`, `HourCycle`
 - `ToolbarComponent`, `ToolbarTone`, `ToolbarVariant`
 - `TooltipComponent`, `TooltipPosition`
 - Token metadata: `colorRamps`, `semanticColorGroups`, `spacing`, `radii`, and `strokes`

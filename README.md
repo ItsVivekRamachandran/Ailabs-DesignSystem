@@ -18,8 +18,9 @@ The Angular component layer includes every family planned in Figma:
 - Text Field, Tab, Tooltip, Menu Item, and List Item
 - Dropdown with option listing, keyboard navigation, and disabled options
 - Docked, horizontal floating, and vertical floating Toolbars
-- Date Picker with a click-to-open calendar overlay
-- Time Picker with a click-to-open dial/keyboard overlay and Apply/Cancel
+- Material 3 Date Picker with docked/modal calendars, manual entry, and Cancel/OK
+- Material 3 Time Picker with dial/keyboard entry, 12/24-hour support, and Cancel/OK
+- Local Google Material Symbols SVG icons (`IconComponent`), bundled with the library
 
 All components are standalone Angular components and are exported by the
 `ailabs-design-system` package.
@@ -133,3 +134,7 @@ src/
 Existing components contain the behavior improvements, and new components appear in the regular catalog. See [the component comparison](docs/ACCESSIBILITY_COMPARISON.md) for scope, migration notes, missing compositions, and verification commands.
 
 `AlertComponent` (`ds-alert`) is a persistent inline notification with info/success/warning/error severities, optional actions and dismissal, and explicit announcement priority. Import it from the public library entry point. It never removes itself or moves focus automatically.
+
+Picker references: [Material date pickers](https://m3.material.io/components/date-pickers/guidelines), [Material time pickers](https://m3.material.io/components/time-pickers/guidelines). The implementation uses AILab colors and fonts. Icons come from the official [Google Material Symbols repository](https://github.com/google/material-design-icons), licensed Apache-2.0; SVGs and the license are in `src/assets/icons/material`. Regenerate the inline SVG registry with `node scripts/generate-material-icons.mjs`.
+
+Import `IconComponent` and use `<ds-icon name="calendar_month" />` inside a labelled control. Icons are decorative; place the accessible name on the control. No remote icon font or asset-copy configuration is needed. Source SVGs are also shipped under `icons/material` in the npm package.

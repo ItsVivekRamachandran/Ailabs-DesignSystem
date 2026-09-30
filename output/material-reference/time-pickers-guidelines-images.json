@@ -1,0 +1,62 @@
+[
+  {
+    "alt": "Time picker. It has a dial and keyboard input for hours and minutes, and a setting for AM or PM.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2pwu0i-01.png?alt=media&token=a9c2389d-af1b-43a9-9c96-59e999c31a6c"
+  },
+  {
+    "alt": "Time picker with dial input selecting hour 7.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2q22nz-02.png?alt=media&token=029a62a3-faff-4ea6-aaff-d5c7e3d0145c"
+  },
+  {
+    "alt": "Input time picker with keyboard active for the hour.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2q5unb-03.png?alt=media&token=9cbe187b-c1c2-4581-a086-4e51f593861d"
+  },
+  {
+    "alt": "Time picker with dial input selecting hour 20. Hours 0–11 use an outer dial, hours 12–23 use an inner dial.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2q7fdq-04.png?alt=media&token=4d6c29d8-df4a-4cb8-98a9-994284bb9984"
+  },
+  {
+    "alt": "17 elements of a dial time picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2u47yh-05.png?alt=media&token=a671138b-6e5b-4d58-8dd2-84aeea14195d"
+  },
+  {
+    "alt": "13 elements of an input time picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd2u4xoe-06.png?alt=media&token=f64fe914-9b52-445d-b071-2f5833ff0f83"
+  },
+  {
+    "alt": "Time picker container, all elements inside.",
+    "src": ""
+  },
+  {
+    "alt": "Input time picker with the hour field active, and so highlighted.",
+    "src": ""
+  },
+  {
+    "alt": "Dial time picker with hour 7 selected.",
+    "src": ""
+  },
+  {
+    "alt": "Time picker buttons.",
+    "src": ""
+  },
+  {
+    "alt": "Time picker in landscape orientation on mobile.",
+    "src": ""
+  },
+  {
+    "alt": "Input time picker in landscape orientation on mobile. It's fully visible despite the limited device height.",
+    "src": ""
+  },
+  {
+    "alt": "Dial time picker in portrait orientation on mobile.",
+    "src": ""
+  },
+  {
+    "alt": "Dial time picker in portrait orientation, too tall to fully fit on a mobile device in landscape mode.",
+    "src": ""
+  },
+  {
+    "alt": "Input time picker in landscape orientation to fit a mobile device in landscape mode.",
+    "src": ""
+  }
+]

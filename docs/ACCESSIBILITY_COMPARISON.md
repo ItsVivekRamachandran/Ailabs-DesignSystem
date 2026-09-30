@@ -18,8 +18,8 @@ This is a targeted reconciliation, not certification or complete Material parity
 | Dropdown — added | No reusable single-select list | Material select / ARIA combobox | Labelled field; top-layer list; keyboard/typeahead; disabled options; error association; 48px rows |
 | Search — removed | Separate Search family | User-requested removal | Removed from exports, demo, and Figma |
 | Toolbar | Toolbar role without composite navigation | APG one Tab stop and orientation-aware arrows | Roving button focus, Home/End, disabled skipping. Material toolbar itself is a layout container |
-| Date picker / calendar | Fixed March grid; inert month buttons | Date-aware navigation and date labels | Click-to-open modal; date selection commits; Escape/Cancel/outside dismiss; focus return; real dates and month/year navigation |
-| Time picker / clock | Inert input mode, static hand, no outputs | Keyboard entry and accessible choices | Click-to-open modal; dial/keyboard entry; Apply/Cancel; focus return; validated numeric entry and AM/PM outputs |
+| Date picker / calendar | Fixed March grid; inert month buttons | Date-aware navigation and date labels | Docked desktop and modal compact views; manual entry; separate month/year menus; 48px targets; draft selection with OK/Cancel; full date labels and grid keyboard navigation |
+| Time picker / clock | Inert input mode, static hand, no outputs | Keyboard entry and accessible choices | Centered modal; 256px dial and 48px dial targets; separate hour/minute inputs; AM/PM at right; keyboard toggle; Cancel/OK; 24-hour numeric mode; constrained-screen input fallback |
 | Tokens / badge | Low-contrast tertiary/warning text, faint focus | WCAG contrast and visible focus | Accessible semantic aliases and opaque focus; dark secondary active fixed |
 
 ## Accessibility decisions
@@ -27,7 +27,7 @@ This is a targeted reconciliation, not certification or complete Material parity
 - Light `text/tertiary` and `border/strong` now alias `neutral/600`; warning foreground aliases `support-gold/800`, preserving the brand's existing warning/error palette. Error and warning are also distinguished by explicit text and symbols, never by color alone.
 - Code contrast checks: tertiary text on white **6.41:1**, warning text on its subtle surface **6.79:1**, error text on its subtle surface **4.74:1**. Thirty semantic pairs are tested in light/dark modes, including action default/hover/active states. Figma primitive RGB values have small pre-existing rounding differences from CSS; ratios quoted here apply to code.
 - Normal text target is 4.5:1; non-text control boundary/focus target is 3:1. Inactive controls are exempt from those WCAG contrast criteria.
-- AILab uses 48 CSS px for primary control targets. Material's common 48dp recommendation is distinct from WCAG 2.2 AA's 24 CSS px minimum (with exceptions). Compact calendar and clock dial buttons remain 30px/26px; they are not claimed to meet Material's preferred 48dp size.
+- AILab uses 48 CSS px for primary control targets. Material's common 48dp recommendation is distinct from WCAG 2.2 AA's 24 CSS px minimum (with exceptions). Calendar and clock dial targets are now 48 CSS px. AM/PM segment geometry follows the 80px two-segment Material time selector.
 - Reduced-motion and forced-colors rules are included. No timed dismissal; the alert's consumer controls lifetime and focus after removal.
 - Figma's existing semantic collection has Light only. The code also has a Dark theme; this update does not invent a full Figma dark-theme library.
 
@@ -58,7 +58,7 @@ Inputs: `severity`, `heading`, `actionLabel`, `dismissible`, `dismissLabel`, `an
 - Radios require a shared `name` and synchronized checked bindings in a labelled fieldset. Checkbox/radio/switch need descriptive projected labels.
 - The controls are input/output APIs, not Angular Forms ControlValueAccessors. No automatic form-model integration is claimed.
 - Tooltip requires a focusable projected trigger. Long-press, RTL before/after positioning and viewport collision handling remain unsupported.
-- Date/time fields open native modal dialogs with focus containment, Escape/outside dismissal, and focus return. Date selection commits immediately; time uses Apply/Cancel. Typed-value validation/localization remains consumer-owned. Calendar uses a roving date tab stop with arrow and month navigation, rather than claiming a full ARIA grid implementation.
+- Date/time fields open native modal dialogs with focus containment, Escape/outside dismissal, and focus return. Both pickers keep a draft until OK; Enter on a calendar date also confirms. Typed-value validation/localization remains consumer-owned. Calendar exposes grid rows/cells and full date names, with a roving date tab stop and cross-month/year keyboard navigation.
 
 ## Remaining compositions from the XE monitoring audit
 
@@ -85,4 +85,8 @@ These checks do not replace manual screen-reader testing (NVDA/JAWS/VoiceOver), 
 - [Material 2 banners](https://m2.material.io/components/banners) (persistent banner reference, not an M3 equivalence claim)
 - [ARIA toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/), [ARIA alert](https://www.w3.org/WAI/ARIA/apg/patterns/alert/)
 
-Picker/Dropdown update verification: browser coverage includes overlay opening, date commit, cancelled month reset, numeric time Apply, Cancel, focus return, disabled Dropdown options, keyboard selection, outside dismissal, and mobile overlay bounds. Figma uses interactive open/selected variants; it does not reproduce native DOM focus behavior.
+Picker/Dropdown update verification: browser coverage includes overlay opening, date commit, cancelled month reset, numeric time OK, Cancel, focus return, disabled Dropdown options, keyboard selection, outside dismissal, and mobile overlay bounds. Figma uses interactive open/selected variants; it does not reproduce native DOM focus behavior.
+
+Material 3 revision: all eight date/time overview, specs, guidelines, and accessibility pages were read in a JavaScript-enabled browser. Geometry and interaction were reconciled while retaining the AILab palette and Inter typography. The product keeps pointer field-click opening; Material accessibility guidance prefers the separate calendar icon as the sole picker entry point. Keyboard focus alone does not open the field. Single-date selection and 24-hour numeric entry are supported; date-range selection, localized formats, and a 24-hour dual-ring dial remain outside this update.
+
+`tests/material-pickers-browser.mjs` exercises docked/modal behavior, pending selection and OK/Cancel, invalid dates, leap years, cross-month/year keys, time auto-advance, input validation, 12/24-hour formats, focus containment, outside dismissal, and 1440/390/320/844px viewports. Results and screenshots: `output/material-pickers`. Screen-reader usability still requires manual verification.

@@ -1,9 +1,10 @@
+import { IconComponent } from './icon.component'
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild, inject } from '@angular/core'
 import { positionOverlay } from './overlay'
 export interface DropdownOption { value: string; label: string; disabled?: boolean }
 let nextId = 0
 @Component({
-  selector: 'ds-dropdown', standalone: true, host: { class: 'ds-dropdown' },
+  selector: 'ds-dropdown', standalone: true, imports: [IconComponent], host: { class: 'ds-dropdown' },
   template: `
     <label class="ds-field__label" [for]="id">{{ label }}</label>
     <button #trigger type="button" class="ds-dropdown__trigger" [id]="id" role="combobox" aria-haspopup="listbox"
@@ -11,14 +12,14 @@ let nextId = 0
       [attr.aria-activedescendant]="opened && active >= 0 ? id + '-option-' + active : null"
       [attr.aria-invalid]="error ? 'true' : null" [attr.aria-describedby]="error || hint ? id + '-hint' : null"
       (click)="opened ? close() : open()" (keydown)="onKey($event)">
-      <span [class.ds-dropdown__placeholder]="!selectedLabel">{{ selectedLabel || placeholder }}</span><span aria-hidden="true">⌄</span>
+      <span [class.ds-dropdown__placeholder]="!selectedLabel">{{ selectedLabel || placeholder }}</span><ds-icon name="arrow_drop_down" />
     </button>
     @if (error || hint) { <span [id]="id + '-hint'" class="ds-field__hint" [class.ds-field__hint--error]="error">{{ error || hint }}</span> }
     <div #panel popover="auto" class="ds-dropdown__list" role="listbox" [id]="id + '-list'" [attr.aria-label]="label" (toggle)="onToggle($event)">
       @for (option of options; track option.value; let i = $index) {
         <div role="option" class="ds-dropdown__option" [id]="id + '-option-' + i" [attr.aria-selected]="option.value === value"
           [attr.aria-disabled]="!!option.disabled" [class.is-active]="active === i" (mousedown)="$event.preventDefault()" (click)="choose(i)">
-          <span>{{ option.label }}</span><span aria-hidden="true">{{ option.value === value ? '✓' : '' }}</span>
+          <span>{{ option.label }}</span>@if (option.value === value) { <ds-icon name="check" /> }
         </div>
       } @empty { <div class="ds-dropdown__empty">No options available</div> }
     </div>

@@ -551,7 +551,7 @@ Avoid introducing a different npm CLI version as an incidental side effect of a 
 | Figma | Library update in a sample consumer file | Intended assets and overrides verified |
 | npm | Install the published version | Fresh consumer build succeeds |
 
-Date/Time fields open selection dialogs. Check month navigation, date selection, time Apply/Cancel, keyboard entry, Escape, and focus return. Dropdown supports keyboard selection and disabled options. Search exports have been removed. Typed-value validation and form-model integration remain application responsibilities.
+Date fields use docked desktop or modal compact selection; Time fields use centered modal selection. Both have manual entry, pending changes, and OK/Cancel. Check month navigation, date selection, time OK/Cancel, keyboard entry, Escape, and focus return. Dropdown supports keyboard selection and disabled options. Search exports have been removed. Typed-value validation and form-model integration remain application responsibilities.
 
 No test or lint scripts exist in the baseline. Builds verify compilation and packaging; they do not establish complete accessibility or behavioral correctness. Add meaningful automated tests as part of production hardening.
 

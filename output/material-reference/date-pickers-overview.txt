@@ -1,0 +1,137 @@
+Skip to main content
+search
+material_design
+Home
+apps
+Get started
+code
+Develop
+book
+Foundations
+palette
+Styles
+add_circle
+Components
+pages
+Blog
+play_arrow
+pause
+dark_mode
+light_mode
+Date pickers
+Date pickers let people select a date, or a range of dates
+Resources
+android
+flutter
+android
+info
+Overview
+style
+Specs
+design_services
+Guidelines
+accessibility_new
+Accessibility
+On this page
+Date pickers
+Availability & resources
+Differences from M2
+link
+Copy link
+
+Date pickers can display past, present, or future dates
+
+Three variants: docked, modal, modal input
+
+Clearly indicate important dates, such as current and selected days
+
+Follow common patterns, like a calendar view
+
+link
+Copy link
+Docked date picker
+Modal date picker
+Modal date input
+link
+Copy link
+Availability & resources
+link
+Copy link
+Type	Resource	Status
+Design
+
+Design Kit (Figma)
+	
+Available
+
+Implementation
+
+Flutter
+	
+Available
+
+
+android
+Jetpack Compose
+	
+Available
+
+
+android
+Android Views (MDC-Android)
+	
+Available
+
+
+language
+Web
+	
+Unavailable
+link
+Copy link
+Differences from M2
+link
+Copy link
+
+Typography and spacing: Titles and labels are larger and have increased spacing to accommodate 48dp target size
+
+Color: New color mappings and compatibility with dynamic color
+
+Variants: The three variants of date pickers have been renamed to not be device-dependent. The former desktop date picker is now known as the docked date picker. The former mobile date picker and date input are now known as modal date picker and modal date input to reinforce that the user must take an action.
+
+link
+Copy link
+
+M2: Date pickers had a drop shadow and different color mappings
+
+M3: Date pickers have larger typography, no shadow, and new color mappings compatible with dynamic color
+
+arrow_left_alt
+Previous
+Chips: Overview
+Up next
+arrow_right_alt
+Date pickers: Specs
+material_design
+
+Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.
+
+Social
+GitHub
+X
+YouTube
+Blog RSS
+Libraries
+Android
+Compose
+Flutter
+Web
+More Google sites
+Google Design
+Archived versions
+Material Design 1
+Material Design 2
+Privacy Policy
+Terms of Service
+Join research studies
+Feedback

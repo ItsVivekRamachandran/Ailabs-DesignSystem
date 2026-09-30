@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "docked vs modal",
+    "draft and OK/Cancel",
+    "leap years and invalid dates",
+    "month/year navigation",
+    "keyboard cross-month/year",
+    "time auto-advance",
+    "numeric validation",
+    "12/24-hour input",
+    "focus containment and return",
+    "outside dismissal",
+    "mobile/landscape/no-scroll",
+    "local SVGs"
+  ],
+  "viewports": [
+    1440,
+    390,
+    320,
+    844
+  ]
+}

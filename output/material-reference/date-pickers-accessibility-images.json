@@ -1,0 +1,42 @@
+[
+  {
+    "alt": "Date picker with the edit icon focused.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5tcq2g-01.png?alt=media&token=c53d3a22-1ce5-4bfb-bf36-77548890bd4a"
+  },
+  {
+    "alt": "Touch target used to select September 17 to 23 on a date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5tdrn3-02.png?alt=media&token=2770d845-5def-4bc1-a7a9-22b8d83f43ef"
+  },
+  {
+    "alt": "Text input field next to a date picker icon provides a choice of how to enter the date.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flwhl9jct-3.png?alt=media&token=ec79be27-46b7-4560-8c67-2ff253e3b94d"
+  },
+  {
+    "alt": "Numeric entry 08172323 automatically formatted to 08/17/2023.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5tjcxl-04.png?alt=media&token=5fa49d5e-5f45-4258-b90e-390d8e9aa4ed"
+  },
+  {
+    "alt": "Optional clear button on lower left corner of a date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5tl1kf-05.png?alt=media&token=2c6fd134-3e07-439b-a93f-1ae9cec2a1bf"
+  },
+  {
+    "alt": "Shift + Page up is the keyboard shortcut to go to the previous year on a date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5tmhkf-06.png?alt=media&token=78a780bd-c455-4e42-a20d-fcb0ef5b1e3f"
+  },
+  {
+    "alt": "A pointer hover over the “T” day on a date picker produces the tooltip “Tuesday.”",
+    "src": ""
+  },
+  {
+    "alt": "A date picker’s label text passes the color contrast minimum of 4.5:1.",
+    "src": ""
+  },
+  {
+    "alt": "Text field accessibility labels.",
+    "src": ""
+  },
+  {
+    "alt": "Current date label providing day, month, and year for screen reader accessibility.",
+    "src": ""
+  }
+]

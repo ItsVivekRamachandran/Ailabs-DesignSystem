@@ -1,0 +1,86 @@
+[
+  {
+    "alt": "A date picker opens in a form UI.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5o0x3j-01.png?alt=media&token=2fde5553-057a-47ca-9e87-19b956f2ad78"
+  },
+  {
+    "alt": "2 date picker variations: a dialog on mobile and a dropdown within a text field on desktop.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5sha07-02.png?alt=media&token=4d9b7796-166a-4e83-8a17-abf61a83c6ae"
+  },
+  {
+    "alt": "A docked date picker component.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5si8zx-03.png?alt=media&token=84db16d1-ec55-415e-b2d1-76214fa1336a"
+  },
+  {
+    "alt": "A modal date picker component.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5sj3v5-04.png?alt=media&token=9c5f5c53-5d9c-4fc0-98ec-417a001994a1"
+  },
+  {
+    "alt": "A modal date input component.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fme1yy2eb-05.png?alt=media&token=eb5f6437-120f-4436-8382-78df0df143f8"
+  },
+  {
+    "alt": "7 elements of a docked date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5skthv-06.png?alt=media&token=4ef9f1b3-6e99-4787-8150-6c64b1808315"
+  },
+  {
+    "alt": "3 elements of a docked date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5slanf-07.png?alt=media&token=fbc898d0-972d-46fb-a595-ecb0db8f514c"
+  },
+  {
+    "alt": "12 elements of a modal date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5sma00-08.png?alt=media&token=1723a5d5-4cdc-4758-a1bc-bb362780ad84"
+  },
+  {
+    "alt": "9 elements of a modal date picker.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5smpl6-09.png?alt=media&token=e4cbb084-d156-4210-a569-37fcda9a9ad4"
+  },
+  {
+    "alt": "7 elements of a modal date input.",
+    "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmd5sng56-10.png?alt=media&token=5d099ed8-e13b-4f7d-8148-7564dd7c636e"
+  },
+  {
+    "alt": "14 elements of a full-screen date picker.",
+    "src": ""
+  },
+  {
+    "alt": "Docked date picker on a desktop screen.",
+    "src": ""
+  },
+  {
+    "alt": "Docked date picker with a text field and the UI picker showing the selected date. ",
+    "src": ""
+  },
+  {
+    "alt": "Docked date picker with a list of months May through September. August is selected.",
+    "src": ""
+  },
+  {
+    "alt": "Docked date picker with a list of years 2025 to 2029. 2025 is selected.",
+    "src": ""
+  },
+  {
+    "alt": "A modal date input component.",
+    "src": ""
+  },
+  {
+    "alt": "A modal date input component showing a day in 1979, which would be difficult to choose using UI.",
+    "src": ""
+  },
+  {
+    "alt": "A modal date input with hint text for entering the date.",
+    "src": ""
+  },
+  {
+    "alt": "A full-screen view of modal date picker on a mobile device.",
+    "src": ""
+  },
+  {
+    "alt": "A docked date picker displaying a full calendar view on a large screen device.",
+    "src": ""
+  },
+  {
+    "alt": "Docked date picker enlarged on a large screen responsively.",
+    "src": ""
+  }
+]

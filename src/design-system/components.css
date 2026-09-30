@@ -162,59 +162,6 @@
 
 .ds-picker-field__control { position: relative; display: flex; align-items: center; }
 .ds-picker-field__control input { padding-right: 42px; }
-.ds-picker-field__calendar-icon, .ds-picker-field__clock-icon { position: absolute; right: 14px; width: 14px; height: 14px; color: var(--icon-secondary); pointer-events: none; }
-.ds-picker-field__calendar-icon { border: 1.5px solid currentColor; border-radius: 2px; }
-.ds-picker-field__calendar-icon::before { content: ''; position: absolute; top: 3px; right: 0; left: 0; border-top: 1.5px solid currentColor; }
-.ds-picker-field__calendar-icon::after { content: ''; position: absolute; top: -3px; left: 2px; width: 7px; height: 4px; border-right: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
-.ds-picker-field__clock-icon { border: 1.5px solid currentColor; border-radius: 50%; }
-.ds-picker-field__clock-icon::before { content: ''; position: absolute; top: 2.5px; left: 5px; width: 1px; height: 4px; background: currentColor; transform-origin: bottom; }
-.ds-picker-field__clock-icon::after { content: ''; position: absolute; top: 6px; left: 5.5px; width: 3px; height: 1px; background: currentColor; transform: rotate(25deg); transform-origin: left; }
-
-.ds-date-calendar, .ds-time-clock { display: block; width: 328px; max-width: 100%; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-default); box-shadow: var(--shadow-md); }
-.ds-picker-panel__header { display: grid; gap: 6px; padding: 16px 16px 14px; color: var(--text-inverse); background: var(--action-primary-default); }
-.ds-picker-panel__header span, .ds-time-clock__eyebrow { color: inherit; font: var(--font-weight-medium) var(--font-size-xs)/14px var(--font-sans); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase; }
-.ds-picker-panel__header strong { font: var(--font-weight-semibold) var(--font-size-3xl)/30px var(--font-sans); }
-.ds-date-calendar__body { padding: 12px 14px 16px; }
-.ds-date-calendar__toolbar { display: flex; align-items: center; justify-content: space-between; min-height: 32px; margin-bottom: 8px; }
-.ds-date-calendar__toolbar button { border: 0; color: var(--text-primary); background: transparent; font: var(--font-weight-medium) var(--font-size-sm)/16px var(--font-sans); cursor: pointer; }
-.ds-date-calendar__toolbar > span { display: flex; gap: 10px; }
-.ds-date-calendar__toolbar > span button { color: var(--icon-secondary); font-size: 24px; font-weight: var(--font-weight-regular); }
-.ds-date-calendar__weekdays, .ds-date-calendar__days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
-.ds-date-calendar__weekdays span { padding: 6px 0; color: var(--text-tertiary); font: var(--font-weight-medium) var(--font-size-xs)/16px var(--font-sans); }
-.ds-date-calendar__days { row-gap: 3px; }
-.ds-date-calendar__days button { justify-self: center; width: 30px; height: 30px; border: 1px solid transparent; border-radius: 50%; color: var(--text-primary); background: transparent; font: var(--font-weight-regular) var(--font-size-xs)/1 var(--font-sans); cursor: pointer; }
-.ds-date-calendar__days button:hover { border-color: var(--border-brand); }
-.ds-date-calendar__days .ds-date-calendar__day--muted { color: var(--text-tertiary); }
-.ds-date-calendar__days .ds-date-calendar__day--selected { color: var(--text-inverse); background: var(--action-primary-default); }
-.ds-date-calendar__choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 20px; padding: 8px 4px 12px; }
-.ds-date-calendar__choices button { min-height: 36px; border: 1px solid transparent; border-radius: var(--radius-default); color: var(--text-primary); background: transparent; font: var(--font-weight-regular) var(--font-size-sm)/1 var(--font-sans); cursor: pointer; }
-.ds-date-calendar__choices button:hover, .ds-date-calendar__choices .ds-date-calendar__choice--selected { border-color: var(--border-brand); color: var(--text-brand); background: var(--action-primary-subtle); }
-
-.ds-time-clock__body { padding: 16px 24px 20px; }
-.ds-time-clock__eyebrow { color: var(--text-tertiary); }
-.ds-time-clock__display { display: grid; grid-template-columns: 1fr 14px 1fr; align-items: center; gap: 6px; margin-top: 12px; }
-.ds-time-clock__display > button { min-height: 52px; border: 1.5px solid transparent; border-radius: var(--radius-default); color: var(--text-primary); background: var(--background-tertiary); font: var(--font-weight-medium) 30px/1 var(--font-sans); cursor: pointer; }
-.ds-time-clock__display > strong { text-align: center; }
-.ds-time-clock__display .ds-time-clock__value--active { border-color: var(--border-focus); color: var(--text-brand); background: var(--surface-default); }
-.ds-time-clock__display .ds-time-clock__value--error { border-color: var(--border-error); color: var(--feedback-error); }
-.ds-time-clock__error { display: block; margin-top: 4px; color: var(--feedback-error); font-size: var(--font-size-xs); }
-.ds-time-clock__dial { position: relative; width: 192px; height: 192px; margin: 18px auto; border-radius: 50%; background: var(--background-tertiary); }
-.ds-time-clock__dial button { position: absolute; z-index: 2; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; color: var(--text-primary); background: transparent; font: var(--font-weight-medium) var(--font-size-xs)/1 var(--font-sans); transform: translate(-50%, -50%); cursor: pointer; }
-.ds-time-clock__dial .ds-time-clock__number--selected { color: var(--text-inverse); background: var(--action-primary-default); }
-.ds-time-clock__hand { position: absolute; top: 50%; left: 50%; z-index: 1; width: 67px; height: 1.5px; background: var(--action-primary-default); transform: rotate(180deg); transform-origin: left; }
-.ds-time-clock__hand::after { content: ''; position: absolute; top: -2px; right: -2px; width: 5px; height: 5px; border-radius: 50%; background: inherit; }
-.ds-time-clock__hand--minutes { transform: rotate(90deg); }
-.ds-time-clock__labels { display: grid; grid-template-columns: 1fr 14px 1fr; gap: 6px; color: var(--text-tertiary); font-size: var(--font-size-xs); text-align: center; }
-.ds-time-clock__labels span:last-child { grid-column: 3; }
-.ds-time-clock__period { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; margin-top: 14px; border-radius: var(--radius-default); background: var(--background-tertiary); }
-.ds-time-clock__period button { min-height: 32px; border: 0; color: var(--text-secondary); background: transparent; font: var(--font-weight-semibold) var(--font-size-sm)/1 var(--font-sans); cursor: pointer; }
-.ds-time-clock__period .is-active { color: var(--text-brand); background: var(--action-primary-subtle); }
-
-@media (max-width: 520px) {
-  .ds-list-item { width: 100%; }
-  .ds-date-calendar, .ds-time-clock { width: min(328px, calc(100vw - 72px)); }
-}
-
 /* Accessibility baseline: visible keyboard focus and comfortable pointer targets. */
 .ds-button, .ds-chip, .ds-tab, .ds-menu-item { min-height: 48px; }
 .ds-button--icon-only, .ds-chip--icon-only { min-width: 48px; }
@@ -250,16 +197,6 @@
   .ds-radio__input:checked + .ds-radio__circle span, .ds-switch__input:checked + .ds-switch__track { background: Highlight; forced-color-adjust: none; }
   .ds-alert__surface { border-color: CanvasText; }
 }
-.ds-time-clock__display input { width: 100%; min-width: 0; min-height: 52px; border: 1px solid var(--border-strong); border-radius: var(--radius-default); background: var(--surface-default); color: var(--text-primary); font: 500 30px/1 var(--font-sans); text-align: center; }
-.ds-time-clock__display input:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
-.ds-date-calendar__toolbar button, .ds-time-clock__period button { min-height: 48px; min-width: 48px; }
-
-/* Top-layer pickers preserve the surrounding page layout. */
-.ds-picker-overlay { position: fixed; margin: 0; padding: 0; width: 328px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow: auto; border: 1px solid var(--border-strong); border-radius: var(--radius-lg); color: var(--text-primary); background: var(--surface-default); box-shadow: 0 12px 32px #0003; }
-.ds-picker-overlay::backdrop { background: #0002; }
-.ds-picker-overlay ds-date-calendar, .ds-picker-overlay ds-time-clock { width: 100%; max-width: 100%; border: 0; box-shadow: none; }
-.ds-picker-overlay__actions { display: flex; justify-content: flex-end; gap: 8px; padding: 8px; }
-.ds-picker-overlay__actions button { min-width: 0; padding-inline: 12px; }
 .ds-dropdown { display: grid; align-content: start; gap: 6px; width: 280px; max-width: 100%; }
 .ds-dropdown__trigger { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface-default); color: var(--text-primary); font: inherit; text-align: left; cursor: pointer; }
 .ds-dropdown__trigger:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
@@ -273,3 +210,86 @@
 .ds-dropdown__option[aria-selected="true"] { color: var(--text-brand); background: var(--background-brand-subtle); }
 .ds-dropdown__option[aria-disabled="true"] { color: var(--text-disabled); cursor: not-allowed; }
 .ds-dropdown__empty { padding: 12px; color: var(--text-secondary); }
+
+/* Material 3 picker geometry, mapped to the AILab semantic palette. */
+.ds-visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.ds-material-field { width:280px; }
+.ds-material-field .ds-picker-field__control input { min-height:56px; padding:16px 56px 16px 16px; font-size:16px; border-radius:4px; }
+.ds-picker-field__toggle { position:absolute; right:4px; top:4px; }
+.ds-picker-icon, .ds-picker-text { display:inline-flex; flex:none; align-items:center; justify-content:center; min-width:48px; min-height:48px; padding:0 12px; border:0; border-radius:999px; background:transparent; color:var(--text-brand); font:500 14px/20px var(--font-sans); cursor:pointer; }
+.ds-picker-icon { width:48px; height:48px; padding:12px; color:var(--text-secondary); }
+.ds-picker-text:hover:not(:disabled), .ds-picker-icon:hover:not(:disabled) { background:color-mix(in srgb,var(--text-brand) 8%,transparent); }
+.ds-picker-icon:active:not(:disabled), .ds-picker-text:active:not(:disabled) { background:color-mix(in srgb,var(--text-brand) 12%,transparent); }
+.ds-picker-icon:focus-visible, .ds-picker-text:focus-visible, .ds-calendar__day:focus-visible, .ds-time-clock button:focus-visible { outline:3px solid var(--border-focus); outline-offset:-3px; }
+.ds-picker-icon:disabled, .ds-picker-text:disabled { color:var(--text-disabled); cursor:not-allowed; }
+.ds-picker-overlay { position:fixed; inset:auto; margin:0; padding:0; border:0; width:360px; max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); border-radius:var(--picker-radius,28px); background:var(--picker-surface,var(--background-tertiary)); color:var(--text-primary); font:400 14px/20px var(--font-sans); overflow:auto; box-shadow:none; }
+.ds-picker-overlay::backdrop { background:rgb(0 0 0 / 32%); }
+.ds-date-overlay:not(.is-modal) { border-radius:16px; outline:1px solid var(--border-subtle); }
+.ds-picker-overlay__actions { display:flex; flex-direction:row; align-items:center; gap:8px; min-height:72px; padding:8px 12px 12px; margin:0; }
+.ds-picker-action-spacer { flex:1; }
+.ds-date-header { padding:16px 12px 12px 24px; border-bottom:1px solid var(--border-subtle); }
+.ds-date-header > span { display:block; margin-bottom:28px; color:var(--text-secondary); font-weight:500; }
+.ds-date-header > div { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.ds-date-header strong { font-size:32px; line-height:40px; font-weight:400; }
+.ds-date-calendar { display:block; width:360px; max-width:100%; padding:12px 12px 0; background:transparent; color:var(--text-primary); box-shadow:none; border-radius:0; }
+.ds-calendar__navigation { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.ds-calendar__nav-group { display:flex; align-items:center; }
+.ds-calendar__menu { gap:0; padding:0 4px; min-width:72px; color:var(--text-secondary); }
+.ds-calendar__menu ds-icon { width:20px; height:20px; }
+.ds-calendar__week { display:grid; grid-template-columns:repeat(7,48px); }
+.ds-calendar__week > [role=columnheader] { display:grid; place-items:center; width:48px; height:48px; font-size:16px; color:var(--text-secondary); }
+.ds-calendar__day { display:grid; place-items:center; width:48px; height:48px; padding:4px; border:0; background:transparent; color:var(--text-primary); border-radius:50%; font:400 16px/24px var(--font-sans); cursor:pointer; }
+.ds-calendar__day > span { display:grid; place-items:center; width:40px; height:40px; border:1px solid transparent; border-radius:50%; }
+.ds-calendar__day.is-outside { color:var(--text-secondary); }
+.ds-calendar__day.is-today > span { border-color:var(--text-brand); color:var(--text-brand); }
+.ds-calendar__day.is-selected > span { background:var(--action-primary-default); color:var(--action-primary-on-primary); border-color:transparent; }
+.ds-calendar__day:hover:not(:disabled):not(.is-selected) > span { background:color-mix(in srgb,var(--text-brand) 8%,transparent); }
+.ds-calendar__day:disabled { color:var(--text-disabled); cursor:not-allowed; }
+.ds-calendar__choices { display:grid; grid-template-columns:repeat(3,1fr); align-content:start; gap:4px 8px; height:288px; overflow:auto; scrollbar-width:thin; }
+.ds-calendar__choices [aria-pressed=true] { background:var(--action-primary-default); color:var(--action-primary-on-primary); }
+.ds-date-entry { display:grid; gap:4px; padding:24px; }
+.ds-date-entry label { font-size:12px; color:var(--text-brand); }
+.ds-date-entry input { width:100%; height:56px; padding:16px; border:1px solid var(--border-strong); border-radius:4px; background:transparent; color:var(--text-primary); font:400 16px/24px var(--font-sans); }
+.ds-date-entry input:focus { outline:2px solid var(--border-focus); outline-offset:-2px; }
+.ds-date-entry input[aria-invalid=true] { border-color:var(--border-error); }
+.ds-date-entry > span { font-size:12px; }
+.ds-time-overlay { width:328px; }
+.ds-time-clock { display:block; width:328px; max-width:100%; color:var(--text-primary); background:transparent; box-shadow:none; border-radius:0; }
+.ds-time-clock__body { padding:24px 24px 0; }
+.ds-time-clock__eyebrow { display:block; color:var(--text-secondary); font:500 14px/20px var(--font-sans); }
+.ds-time-clock__selectors { display:flex; align-items:flex-start; gap:12px; margin-top:20px; }
+.ds-time-clock__display { display:grid; grid-template-columns:96px 24px 96px; gap:0; align-items:start; margin:0; }
+.ds-time-clock__unit { display:grid; gap:8px; }
+.ds-time-clock__unit > button, .ds-time-clock__unit > input { width:96px; height:80px; padding:0; border:0; border-radius:8px; background:var(--picker-field,var(--surface-default)); color:var(--text-primary); font:400 56px/64px var(--font-sans); text-align:center; cursor:pointer; }
+.ds-time-clock__unit > input { height:72px; font-size:48px; cursor:text; }
+.ds-time-clock__unit > span { padding-left:0; color:var(--text-secondary); font-size:12px; line-height:16px; }
+.ds-time-clock__unit .is-active, .ds-time-clock__unit > input:focus { background:var(--background-brand-subtle); color:var(--text-brand); }
+.ds-time-clock__unit > input:focus { outline:2px solid var(--border-focus); outline-offset:-2px; }
+.ds-time-clock__unit > input[aria-invalid=true] { outline:2px solid var(--border-error); }
+.ds-time-clock__display > strong { display:grid; place-items:center; height:80px; font-size:48px; font-weight:400; }
+.ds-time-clock__body.is-input .ds-time-clock__display > strong { height:72px; }
+.ds-time-clock__period { display:flex; flex-direction:column; width:52px; min-width:52px; height:80px; margin:0; overflow:visible; border:1px solid var(--border-strong); border-radius:8px; background:transparent; }
+.ds-time-clock__period button { position:relative; flex:1; min-width:50px; min-height:0; padding:0; border:0; border-radius:7px 7px 0 0; color:var(--text-secondary); background:transparent; font:500 14px/20px var(--font-sans); cursor:pointer; }
+.ds-time-clock__period button:last-child { border-top:1px solid var(--border-strong); border-radius:0 0 7px 7px; }
+.ds-time-clock__period button.is-active { color:var(--text-brand); background:var(--background-brand-subtle); }
+.ds-time-clock__body.is-input .ds-time-clock__period { height:72px; }
+.ds-time-clock__dial { position:relative; width:256px; height:256px; margin:36px auto 24px; background:var(--picker-field,var(--surface-default)); border-radius:50%; touch-action:none; }
+.ds-time-clock__dial button { position:absolute; display:grid; place-items:center; width:48px; height:48px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--text-primary); font:400 16px/24px var(--font-sans); transform:translate(-50%,-50%); cursor:pointer; z-index:2; }
+.ds-time-clock__dial button.is-selected { color:var(--action-primary-on-primary); }
+.ds-time-clock__dial button:not(.is-selected):hover { background:color-mix(in srgb,var(--text-brand) 8%,transparent); }
+.ds-time-clock__hand { position:absolute; left:50%; top:50%; width:102.4px; height:2px; background:var(--action-primary-default); transform-origin:left center; pointer-events:none; }
+.ds-time-clock__center { position:absolute; left:50%; top:50%; width:8px; height:8px; border-radius:50%; background:var(--action-primary-default); transform:translate(-50%,-50%); pointer-events:none; }
+.ds-time-clock__handle { position:absolute; display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:var(--action-primary-default); transform:translate(-50%,-50%); pointer-events:none; }
+.ds-time-clock__dot { width:6px; height:6px; border-radius:50%; background:var(--action-primary-on-primary); }
+.ds-time-clock__error { display:block; margin-top:12px; color:var(--feedback-error); font-size:12px; }
+.ds-time-overlay .ds-picker-overlay__actions { padding:0 12px 12px; min-height:60px; }
+.ds-time-overlay.is-input .ds-picker-overlay__actions { padding-top:20px; }
+.ds-time-clock__body.is-24h .ds-time-clock__display { grid-template-columns:114px 24px 114px; }
+.ds-time-clock__body.is-24h .ds-time-clock__unit > input { width:114px; }
+@media (max-width:359px) { .ds-date-overlay { width:100vw; max-width:100vw; } .ds-time-clock__body { padding-left:12px; padding-right:12px; } }
+@media (forced-colors:active) { .ds-picker-overlay { outline:1px solid CanvasText; } .ds-calendar__day.is-selected > span, .ds-time-clock__handle { forced-color-adjust:none; background:Highlight; color:HighlightText; } .ds-time-clock__dial button.is-selected { forced-color-adjust:none; color:HighlightText; } }
+
+.ds-alert__icon { border:0; }
+.ds-check__box ds-icon { width:16px; height:16px; }
+
+.ds-date-overlay:not(.is-modal)::backdrop { background:transparent; }

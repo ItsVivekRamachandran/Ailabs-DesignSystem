@@ -1,17 +1,18 @@
+import { IconComponent } from './icon.component'
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 
 let nextCheckboxId = 0
 
 @Component({
   selector: 'ds-checkbox',
-  standalone: true,
+  standalone: true, imports: [IconComponent],
   host: { class: 'ds-check' },
   template: `
     <label class="ds-check__label" [class.ds-check__label--disabled]="disabled" [for]="inputId">
       <input class="ds-check__input" [id]="inputId" type="checkbox" [checked]="checked" [indeterminate]="indeterminate" [disabled]="disabled" [attr.aria-checked]="indeterminate ? 'mixed' : checked" (change)="toggle($event)" />
       <span class="ds-check__box" [class.ds-check__box--checked]="checked" [class.ds-check__box--mixed]="indeterminate" aria-hidden="true">
-        @if (indeterminate) { <span class="ds-check__mixed"></span> }
-        @else if (checked) { <span class="ds-check__tick">✓</span> }
+        @if (indeterminate) { <ds-icon name="remove" /> }
+        @else if (checked) { <ds-icon name="check" /> }
       </span>
       <span><ng-content /></span>
     </label>
