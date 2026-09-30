@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "theme": "light",
+      "selector": ".ds-tooltip__bubble",
+      "shadow": "rgba(0, 0, 0, 0.16) 0px 2px 6px 0px, rgba(0, 0, 0, 0.12) 0px 1px 2px 0px"
+    },
+    {
+      "theme": "light",
+      "selector": ".ds-toolbar--floating-horizontal .ds-toolbar__container",
+      "shadow": "rgba(0, 0, 0, 0.18) 0px 8px 24px 0px, rgba(0, 0, 0, 0.12) 0px 2px 6px 0px"
+    },
+    {
+      "theme": "dark",
+      "selector": ".ds-tooltip__bubble",
+      "shadow": "rgba(0, 0, 0, 0.16) 0px 2px 6px 0px, rgba(0, 0, 0, 0.12) 0px 1px 2px 0px"
+    },
+    {
+      "theme": "dark",
+      "selector": ".ds-toolbar--floating-horizontal .ds-toolbar__container",
+      "shadow": "rgba(0, 0, 0, 0.18) 0px 8px 24px 0px, rgba(0, 0, 0, 0.12) 0px 2px 6px 0px"
+    }
+  ]
+}

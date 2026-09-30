@@ -24,8 +24,8 @@ This is a targeted reconciliation, not certification or complete Material parity
 
 ## Accessibility decisions
 
-- Light `text/tertiary` and `border/strong` now alias `neutral/600`; warning foreground aliases `support-gold/800`, preserving the brand's existing warning/error palette. Error and warning are also distinguished by explicit text and symbols, never by color alone.
-- Code contrast checks: tertiary text on white **6.41:1**, warning text on its subtle surface **6.79:1**, error text on its subtle surface **4.74:1**. Thirty semantic pairs are tested in light/dark modes, including action default/hover/active states. Figma primitive RGB values have small pre-existing rounding differences from CSS; ratios quoted here apply to code.
+- IGT/Everi brand colors now use approved flat values. Normal text uses Slate/White or Slate/Iced Purple pairings; IGT Purple is reserved for graphics and large text. Error/warning states retain explicit labels and symbols.
+- Automated contrast checks cover text, controls, selection, focus, and feedback in both themes. The tests calculate ratios from the actual `#F7F7F7` White token rather than the pure white used in the PDF appendix.
 - Normal text target is 4.5:1; non-text control boundary/focus target is 3:1. Inactive controls are exempt from those WCAG contrast criteria.
 - AILab uses 48 CSS px for primary control targets. Material's common 48dp recommendation is distinct from WCAG 2.2 AA's 24 CSS px minimum (with exceptions). Calendar and clock dial targets are now 48 CSS px. AM/PM segment geometry follows the 80px two-segment Material time selector.
 - Reduced-motion and forced-colors rules are included. No timed dismissal; the alert's consumer controls lifetime and focus after removal.

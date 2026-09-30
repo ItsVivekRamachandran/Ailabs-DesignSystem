@@ -7,8 +7,9 @@ foundational tokens, reusable components, and an interactive showcase.
 
 The token layer is synchronized with the AI Lab Design System Figma file:
 
-- 58 primitive color variables across Primary, Secondary, Support Gold, Support Sand, and Neutral ramps
-- 51 semantic color aliases for the Light mode
+- 7 exact IGT/Everi brand colors; legacy ramp names retained as compatibility aliases
+- 51 semantic color aliases for matching Light and Dark modes
+- Shared overlay shadows for tooltips, dropdowns, floating toolbars, and modal pickers
 - Spacing, radius, stroke, and typography variables
 - CSS custom properties and typed TypeScript token exports
 

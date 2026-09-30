@@ -1,0 +1,324 @@
+[
+  {
+    "theme": "light",
+    "fg": "--text-primary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-secondary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-tertiary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-warning",
+    "bg": "--feedback-warning-subtle",
+    "ratio": 10.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-error",
+    "bg": "--feedback-error-subtle",
+    "ratio": 10.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-success",
+    "bg": "--feedback-success-subtle",
+    "ratio": 10.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-brand",
+    "bg": "--background-brand-subtle",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--border-strong",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--border-focus",
+    "bg": "--surface-default",
+    "ratio": 3.5,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--text-link",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-primary",
+    "bg": "--background-tertiary",
+    "ratio": 10.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-inverse",
+    "bg": "--background-inverse",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--icon-secondary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-error",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--border-error",
+    "bg": "--surface-default",
+    "ratio": 3.12,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--accent-on-accent",
+    "bg": "--accent-default",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-subtle",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-hover",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-active",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-default",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-hover",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-active",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-primary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-secondary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-tertiary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-warning",
+    "bg": "--feedback-warning-subtle",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-error",
+    "bg": "--feedback-error-subtle",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-success",
+    "bg": "--feedback-success-subtle",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-brand",
+    "bg": "--background-brand-subtle",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--border-strong",
+    "bg": "--surface-default",
+    "ratio": 10.85,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--border-focus",
+    "bg": "--surface-default",
+    "ratio": 6.85,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-link",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-primary",
+    "bg": "--background-tertiary",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-inverse",
+    "bg": "--background-inverse",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--icon-secondary",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-error",
+    "bg": "--surface-default",
+    "ratio": 12.75,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--border-error",
+    "bg": "--surface-default",
+    "ratio": 4.09,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--accent-on-accent",
+    "bg": "--accent-default",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-subtle",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-default",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-hover",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-active",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-default",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-hover",
+    "ratio": 6.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-active",
+    "ratio": 6.85,
+    "minimum": 4.5
+  }
+]

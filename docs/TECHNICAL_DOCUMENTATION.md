@@ -547,16 +547,32 @@ Components should prefer semantic or stable aliases over primitive colors. This 
 
 ### 8.2 Color system
 
-Primitive ramps include:
+The palette follows IGT/Everi Brand Guidelines v03, pages 6–10 and 17:
 
-- Primary: 11 steps, 50 through 950.
-- Secondary: 11 steps, 50 through 950.
-- Support Gold: 11 steps, 50 through 950.
-- Support Sand: 11 steps, 50 through 950.
-- Neutral: 12 steps, 0 through 950.
-- Black and White: 2 absolute values.
+| Color | Hex | Use |
+|---|---|---|
+| IGT Purple | `#B850FD` | Brand graphics, large headlines, focus indicators |
+| Iced Purple | `#BEACFE` | Selected surfaces and secondary actions with Slate text |
+| White | `#F7F7F7` | Neutral light surfaces and text on Slate |
+| Slate | `#292D3D` | Body text and functional controls |
+| Gray | `#E5E5E5` | Neutral surfaces and decorative dividers |
+| Cyan | `#00DCFA` | Decorative accent only |
+| Magenta | `#EE36E4` | Accent/error boundary; not body text or background fills |
 
-The TypeScript metadata describes 58 primitive color entries and 51 semantic color names across Background, Surface, Text, Primary action, Secondary action, Accent, Feedback, Icon, and Border groups.
+No custom tints are generated. Old primitive ramp names remain as compatibility aliases to approved colors; they no longer represent a shade scale. The showcase exposes seven brand colors and 51 semantic roles in Light and Dark modes. Exact brand values take precedence over visually sampled PDF colors. The appendix uses pure white for its calculations, while the primary palette specifies `#F7F7F7`; implementation contrast checks use the latter.
+
+Small action labels use White on Slate or Slate on Iced Purple. IGT Purple with either White or Slate does not meet normal-text AA, so it is reserved for graphics and large text. Feedback retains explicit severity labels and icons, with readable neutral text rather than introducing an unapproved status palette.
+
+Overlay effects are shared in CSS and Figma:
+
+| CSS token | Figma effect style | Applied to |
+|---|---|---|
+| `--shadow-overlay-low` | `Overlay/Low` | Tooltips |
+| `--shadow-overlay` | `Overlay/Elevation` | Dropdowns, docked date picker, floating toolbars |
+| `--shadow-modal` | `Overlay/Modal` | Modal date and time pickers |
+
+Shadows use neutral black, not transparent brand colors. Dark overlays also have visible boundaries. Brand gradients are available as `--gradient-brand` and `--gradient-iced`, with matching Figma paint styles; keep small text off low-contrast portions of gradients.
+
 
 ### 8.3 Foundation scales
 
@@ -607,7 +623,7 @@ All components use `OnPush`. Inputs, outputs, user events, and Angular signals p
 
 ### 9.4 Styling and responsiveness
 
-The site uses global responsive CSS at 900 px and 600 px breakpoints; individual component adaptations occur at 520 px. The app honors `prefers-reduced-motion: reduce` in the showcase stylesheet. Modern CSS features include custom properties, `color-mix()`, `:has()`, `clamp()`, grid, and flexbox, so target browsers should be current evergreen releases.
+The site uses global responsive CSS at 900 px and 600 px breakpoints; individual component adaptations occur at 520 px. The app honors `prefers-reduced-motion: reduce` in the showcase stylesheet. Modern CSS features include custom properties, `:has()`, `clamp()`, grid, and flexbox, so target browsers should be current evergreen releases.
 
 ## 10. Accessibility guidance
 

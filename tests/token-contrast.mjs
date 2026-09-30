@@ -20,6 +20,10 @@ for (const [theme, tokens] of [['light', base], ['dark', { ...base, ...parse(dar
   ['--text-primary', '--surface-default', 4.5], ['--text-secondary', '--surface-default', 4.5], ['--text-tertiary', '--surface-default', 4.5],
   ['--feedback-warning', '--feedback-warning-subtle', 4.5], ['--feedback-error', '--feedback-error-subtle', 4.5], ['--feedback-success', '--feedback-success-subtle', 4.5],
   ['--text-brand', '--background-brand-subtle', 4.5], ['--border-strong', '--surface-default', 3], ['--border-focus', '--surface-default', 3],
+  ['--text-link', '--surface-default', 4.5], ['--text-primary', '--background-tertiary', 4.5],
+  ['--text-inverse', '--background-inverse', 4.5], ['--icon-secondary', '--surface-default', 3],
+  ['--feedback-error', '--surface-default', 4.5], ['--border-error', '--surface-default', 3],
+  ['--accent-on-accent', '--accent-default', 4.5], ['--action-secondary-on-secondary', '--action-secondary-subtle', 4.5],
   ...['primary', 'secondary'].flatMap(tone => ['default', 'hover', 'active'].map(state => [`--action-${tone}-on-${tone}`, `--action-${tone}-${state}`, 4.5]))
  ]
  for (const [fg,bg,min] of pairs) {
