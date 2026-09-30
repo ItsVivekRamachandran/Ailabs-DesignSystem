@@ -12,6 +12,11 @@
       "glob": "**/*",
       "input": "schematics",
       "output": "schematics"
+    },
+    {
+      "glob": "**/*",
+      "input": "src/assets/icons/material",
+      "output": "icons/material"
     }
   ],
   "lib": {
