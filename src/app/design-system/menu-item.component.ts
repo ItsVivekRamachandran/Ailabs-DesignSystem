@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
+  @Input() @HostBinding("attr.type") type = "button"
   @Input() shortcut = ''
   @Input() active = false
 
@@ -15,5 +16,6 @@ export class MenuItemComponent {
     return `ds-menu-item${this.active ? ' ds-menu-item--active' : ''}`
   }
 
-  @HostBinding('attr.role') readonly role = 'menuitem'
+  // Standalone command buttons retain native semantics. Set role=menuitem only inside a managed menu.
+  @Input() @HostBinding('attr.role') role: string | null = null
 }

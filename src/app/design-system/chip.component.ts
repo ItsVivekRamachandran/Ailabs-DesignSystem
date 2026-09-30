@@ -9,8 +9,10 @@ export type ChipVariant = 'filled' | 'outlined'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipComponent {
+  @Input() @HostBinding("attr.type") type = "button"
   @Input() variant: ChipVariant = 'filled'
   @Input() selected = false
+  @HostBinding("attr.aria-pressed") get pressed(): string { return String(this.selected) }
   @Input() iconOnly = false
 
   @HostBinding('class')

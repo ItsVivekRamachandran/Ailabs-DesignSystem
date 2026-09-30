@@ -178,11 +178,11 @@ The app does not currently derive the initial theme from `prefers-color-scheme`.
 
 ### 5.3 Component playground
 
-The playground supports Button, Chip, Badge, Checkbox, Switch, Radio, Text field, Tabs, Menu item, List item, Search, and Toolbar. Choose a component in the left navigation and adjust its available controls. The preview and Angular markup update from signals and computed values.
+The playground supports Button, Chip, Badge, Checkbox, Switch, Radio, Text field, Tabs, Menu item, List item, Dropdown, and Toolbar. Choose a component in the left navigation and adjust its available controls. The preview and Angular markup update from signals and computed values.
 
 The “Copy code” action writes the displayed markup to the clipboard and shows a temporary confirmation. Browser clipboard access may require HTTPS or localhost and user permission.
 
-Date Calendar, Time Clock, Card, Tooltip, and Search Panel are demonstrated in the component catalog but are not selectable in the current playground menu.
+Date Picker, Time Picker, Card, and Tooltip are demonstrated in the component catalog but are not selectable in the current playground menu.
 
 ## 6. Consuming components in Angular
 
@@ -466,52 +466,18 @@ The component has projection slots selected by `[avatar]`, `[title]`, and `[trai
 </button>
 ```
 
-### 7.13 Search bar
+### 7.13 Dropdown
 
-**Import:** `SearchBarComponent`
-**Selector:** `ds-search-bar`
+**Import:** `DropdownComponent`, `DropdownOption`
+**Selector:** `ds-dropdown`
 
-| Input / output | Type | Default / payload |
-|---|---|---|
-| `placeholder` | `string` | `'Hinted search text'` |
-| `ariaLabel` | `string` | `'Search'` |
-| `value` | `string` | `''` |
-| `state` | `'default' \| 'hovered' \| 'focused'` | `'default'` |
-| `valueChange` | `EventEmitter<string>` | Current query |
-| `search` | `EventEmitter<string>` | Submitted query |
-| `clear` | `EventEmitter<void>` | Clear action |
+Inputs: `label`, `placeholder`, `options: readonly DropdownOption[]`, `value`, `disabled`, `error`, and `hint`. Output: `valueChange: EventEmitter<string>`.
 
-`state` is a showcase/visual-state control; actual browser hover and focus CSS also applies. Form submission prevents page navigation and emits the query.
+Each option has a unique `value`, a `label`, and optional `disabled`. The single-select combobox opens a top-layer option list. Arrow keys, Home/End, and typeahead move the active option; Enter/Space commits. Disabled options are skipped. Escape, Tab, or outside click closes the list. Empty lists display “No options available.”
 
-### 7.14 Search panel
+### 7.14 Search removal
 
-**Import:** `SearchPanelComponent`
-**Selector:** `ds-search-panel`
-
-| Input / output | Type | Default / payload |
-|---|---|---|
-| `configuration` | `'input' \| 'supporting'` | `'input'` |
-| `value` | `string` | `''` |
-| `placeholder` | `string` | `'Hinted search text'` |
-| `ariaLabel` | `string` | `'Search'` |
-| `resultsLabel` | `string` | `'Search results'` |
-| `results` | `readonly SearchResult[]` | Built-in demo results when empty |
-| `valueChange` | `EventEmitter<string>` | Current query |
-| `search` | `EventEmitter<string>` | Submitted query |
-| `clear` | `EventEmitter<void>` | Clear action |
-| `back` | `EventEmitter<void>` | Back action |
-| `voice` | `EventEmitter<void>` | Voice action |
-| `resultSelect` | `EventEmitter<SearchResult>` | Selected result object |
-
-```ts
-interface SearchResult {
-  readonly id: string
-  readonly label: string
-  readonly supportingText: string
-}
-```
-
-Pass real results explicitly in production. An empty array intentionally displays placeholder demo content rather than an empty state.
+Search Bar and Search Panel were removed from the package, demo, and Figma library on 30 September 2026. Remove their imports and usages before upgrading. The text field's optional search icon remains available.
 
 ### 7.15 Date picker field
 
@@ -527,7 +493,7 @@ Pass real results explicitly in production. An empty array intentionally display
 | `disabled` | `boolean` | `false` |
 | `valueChange` | `EventEmitter<string>` | Unparsed input string |
 
-This component is a styled text field. It does not parse, validate, localize, or open `DateCalendarComponent` automatically.
+Clicking the field, Enter, or Arrow Down opens a native modal calendar dialog positioned by the field (centered on narrow screens). Selecting a date emits `MM / DD / YYYY` and closes the dialog. Escape, Cancel, or outside click dismisses without changing the value and restores focus. Typed values are emitted directly; application validation and localization remain consumer responsibilities.
 
 ### 7.16 Date calendar
 
@@ -541,14 +507,14 @@ This component is a styled text field. It does not parse, validate, localize, or
 | `selectedYear` | `number` | `2024` |
 | `selectedDayChange` | `EventEmitter<number>` | Selected current-month day |
 
-The present calendar is a fixed March demonstration: month labels, the 42-day grid, header text, and year list are static. Previous/next buttons have labels but no navigation handler. Month selection returns to the calendar view; year selection changes the year locally and returns to calendar view. Treat it as a visual prototype until full date logic is implemented.
+The calendar calculates a 42-day grid for `selectedMonth` (zero-based) and `selectedYear`, with previous/next month and month/year selection. `dateChange` emits a Date; day/month/year outputs expose selection changes. Arrow keys move among visible dates, Home/End move within a week, and PageUp/PageDown change month. The picker resets a cancelled draft when reopened.
 
 ### 7.17 Time picker field
 
 **Import:** `TimePickerComponent`
 **Selector:** `ds-time-picker`
 
-Its API mirrors the date field: `label`, `placeholder`, `value`, `error`, `disabled`, and `valueChange`. The default placeholder is `HH : MM`. Values are emitted as unparsed strings.
+Its API mirrors the date field. Default label: `Time`; placeholder: `HH : MM AM`. Click, Enter, or Arrow Down opens a modal dial overlay. Keyboard switches to numeric hour/minute entry. Apply emits `HH : MM AM/PM`; Cancel, Escape, or outside click discards the draft and returns focus. Typed values are emitted directly for application validation.
 
 ### 7.18 Time clock
 
@@ -564,7 +530,7 @@ Its API mirrors the date field: `label`, `placeholder`, `value`, `error`, `disab
 | `period` | `'AM' \| 'PM'` | `'AM'` |
 | `error` | `string` | `''` |
 
-The dial calculates twelve item positions at 30-degree intervals. Selecting an item changes the component's internal hour or minute. The component currently exposes no change outputs, and input mode displays labels rather than editable time inputs. It is therefore a visual/interaction prototype, not a complete form control.
+The dial calculates twelve item positions. `hourChange`, `minuteChange`, and `periodChange` expose edits. Input mode provides labelled numeric fields (hours 1–12, minutes 0–59). The parent picker checks validity before Apply.
 
 ### 7.19 Toolbar
 
@@ -776,7 +742,7 @@ Then manually check:
 - Desktop and mobile widths.
 - Keyboard focus for every control.
 - Every playground component and copy action.
-- Search clear, submit, back, voice, and result events.
+- Dropdown mouse/keyboard selection, disabled options, dismissal, and picker Apply/Cancel.
 - Form error and disabled states.
 - Date and time prototype interactions.
 - GitHub Pages base-path asset loading.
@@ -841,7 +807,7 @@ The most important production-hardening gaps are:
 2. Date Calendar is fixed to a March sample and lacks real navigation, parsing, localization, and complete keyboard support.
 3. Time Clock lacks outputs and complete input-mode behavior.
 4. Tabs and menu items provide semantics/styles but not composite-widget keyboard management.
-5. Search Panel displays demo results when its `results` input is empty and has no explicit loading or empty states.
+5. Search components have been removed; migrate existing imports before upgrading.
 6. Clipboard failures are not surfaced to users.
 7. CSS and TypeScript token definitions are manually duplicated.
 8. No formal supported-browser matrix or automated browser compatibility testing exists.
@@ -891,9 +857,9 @@ For radio groups, keep one selected value in the parent and update it from each 
 
 Initialize `model = 'fast'` in the parent and import `RadioComponent`.
 
-### 19.2 Search and toolbar composition
+### 19.2 Dropdown and toolbar composition
 
-Search components provide local UI and outputs; they do not call an API, filter a remote data source, or provide speech recognition. Wire search, voice, back, and result selection to application behavior. SearchBar uses a form internally, so avoid nesting it inside another form.
+Dropdown provides local selection and a valueChange output. Supply unique option values and connect selection to application state.
 
 Toolbar content is projected. Its variants do not implement dragging, viewport anchoring, or editor commands. Consumer buttons need handlers and labels. Roving keyboard focus for a complete composite toolbar is not implemented.
 
@@ -933,7 +899,7 @@ The barrel file exports:
 - `ListItemComponent`
 - `MenuItemComponent`
 - `RadioComponent`
-- `SearchBarComponent`, `SearchPanelComponent`, `SearchConfiguration`, `SearchResult`, `SearchState`
+- `DropdownComponent`, `DropdownOption`
 - `SwitchComponent`
 - `TabComponent`
 - `TimeClockComponent`, `TimePickerComponent`, `ClockMode`, `ClockView`

@@ -8,7 +8,7 @@ let nextCheckboxId = 0
   host: { class: 'ds-check' },
   template: `
     <label class="ds-check__label" [class.ds-check__label--disabled]="disabled" [for]="inputId">
-      <input class="ds-check__input" [id]="inputId" type="checkbox" [checked]="checked" [disabled]="disabled" [attr.aria-checked]="indeterminate ? 'mixed' : checked" (change)="toggle($event)" />
+      <input class="ds-check__input" [id]="inputId" type="checkbox" [checked]="checked" [indeterminate]="indeterminate" [disabled]="disabled" [attr.aria-checked]="indeterminate ? 'mixed' : checked" (change)="toggle($event)" />
       <span class="ds-check__box" [class.ds-check__box--checked]="checked" [class.ds-check__box--mixed]="indeterminate" aria-hidden="true">
         @if (indeterminate) { <span class="ds-check__mixed"></span> }
         @else if (checked) { <span class="ds-check__tick">✓</span> }

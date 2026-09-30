@@ -16,10 +16,10 @@ The Angular component layer includes every family planned in Figma:
 
 - Button, Checkbox, Chip, Switch, and Radio
 - Text Field, Tab, Tooltip, Menu Item, and List Item
-- Search Bar and Docked Search layouts
+- Dropdown with option listing, keyboard navigation, and disabled options
 - Docked, horizontal floating, and vertical floating Toolbars
-- Date Picker with Calendar views
-- Time Picker with Dial and Input views
+- Date Picker with a click-to-open calendar overlay
+- Time Picker with a click-to-open dial/keyboard overlay and Apply/Cancel
 
 All components are standalone Angular components and are exported by the
 `ailabs-design-system` package.
@@ -49,18 +49,18 @@ import {
   ButtonComponent,
   CheckboxComponent,
   DatePickerComponent,
-  SearchBarComponent,
+  DropdownComponent,
   ToolbarComponent,
 } from 'ailabs-design-system'
 
 @Component({
   standalone: true,
-  imports: [ButtonComponent, CheckboxComponent, DatePickerComponent, SearchBarComponent, ToolbarComponent],
+  imports: [ButtonComponent, CheckboxComponent, DatePickerComponent, DropdownComponent, ToolbarComponent],
   template: `
     <button dsButton>Continue</button>
     <ds-checkbox>Remember me</ds-checkbox>
     <ds-date-picker label="Start date" />
-    <ds-search-bar placeholder="Search projects" />
+    <ds-dropdown label="Workspace" [options]="[{ value: 'design', label: 'Design' }, { value: 'engineering', label: 'Engineering' }]" />
     <ds-toolbar variant="floating-horizontal" tone="vibrant">
       <button dsButton [iconOnly]="true" aria-label="Bold">…</button>
       <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic">…</button>
@@ -127,3 +127,9 @@ src/
 ├── main.ts             Angular bootstrap
 └── styles.css          Playground layout and responsive styles
 ```
+
+### Accessibility and Material comparison
+
+Existing components contain the behavior improvements, and new components appear in the regular catalog. See [the component comparison](docs/ACCESSIBILITY_COMPARISON.md) for scope, migration notes, missing compositions, and verification commands.
+
+`AlertComponent` (`ds-alert`) is a persistent inline notification with info/success/warning/error severities, optional actions and dismissal, and explicit announcement priority. Import it from the public library entry point. It never removes itself or moves focus automatically.

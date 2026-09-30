@@ -14,9 +14,11 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent {
+  @Input() @HostBinding("attr.type") type = "button"
   @Input() title = ''
   @Input() supportingText = ''
   @Input() selected = false
+  @HostBinding("attr.aria-pressed") get pressed(): string { return String(this.selected) }
 
   @HostBinding('class')
   get classes(): string {

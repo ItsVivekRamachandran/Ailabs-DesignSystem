@@ -14,13 +14,16 @@ let nextInputId = 0
           <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
         </svg>
       }
-      <input class="ds-input" [class.ds-input--error]="error" [id]="inputId" [type]="type" [placeholder]="placeholder" [value]="value" [disabled]="disabled" [attr.aria-invalid]="error ? 'true' : null" [attr.aria-describedby]="hint || error ? inputId + '-hint' : null" (input)="onInput($event)" />
+      <input class="ds-input" [class.ds-input--error]="error" [id]="inputId" [type]="type" [attr.aria-label]="ariaLabel || null" [required]="required" [attr.autocomplete]="autocomplete || null" [placeholder]="placeholder" [value]="value" [disabled]="disabled" [attr.aria-invalid]="error ? 'true' : null" [attr.aria-describedby]="hint || error ? inputId + '-hint' : null" (input)="onInput($event)" />
     </span>
     @if (error || hint) { <span class="ds-field__hint" [class.ds-field__hint--error]="error" [id]="inputId + '-hint'">{{ error || hint }}</span> }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
+  @Input() ariaLabel = ''
+  @Input() required = false
+  @Input() autocomplete = ''
   @Input() label = ''
   @Input() hint = ''
   @Input() placeholder = ''

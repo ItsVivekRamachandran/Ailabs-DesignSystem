@@ -177,8 +177,19 @@
     </section>
 
     <section class="section" id="components">
-      <div class="section-heading"><div><p class="section-kicker">Components</p><h2>The complete Figma set.</h2></div><a href="https://www.figma.com/design/FZDQAzD6Q44OMCeYDKdfp8/AILab-Design-System?node-id=1-3" target="_blank" rel="noreferrer"><button dsButton variant="outline"><svg><use href="#icon-arrow"></use></svg>Open Figma library</button></a></div>
+      <div class="section-heading"><div><p class="section-kicker">Components</p><h2>Reusable components.</h2></div><a href="https://www.figma.com/design/FZDQAzD6Q44OMCeYDKdfp8/AILab-Design-System?node-id=1-3" target="_blank" rel="noreferrer"><button dsButton variant="outline"><svg><use href="#icon-arrow"></use></svg>Open Figma library</button></a></div>
       <div class="component-catalog">
+        <article class="component-sample component-sample--wide">
+          <div class="component-sample__heading"><h3>Inline alert</h3><code>New · 4 severities · desktop / mobile</code></div>
+          <div class="component-sample__canvas control-stack">
+            <ds-alert heading="Kiosk status" severity="info">All devices are being monitored.</ds-alert>
+            <ds-alert heading="Update complete" severity="success">Your changes have been saved.</ds-alert>
+            @if (alertVisible()) { <ds-alert severity="warning" heading="Memory usage is high" actionLabel="Review status" [dismissible]="true" (action)="alertAction.set('Status review requested.')" (dismiss)="alertVisible.set(false); restoreAlert.focus()">Review the kiosk before restarting services.</ds-alert> }
+            <button #restoreAlert type="button" class="ds-button ds-button--outline" (click)="alertVisible.set(true)">Restore warning example</button>
+            <ds-alert severity="error" heading="Connection lost">Check the connection and try again.</ds-alert>
+            <p role="status">{{ alertAction() }}</p>
+          </div>
+        </article>
         <article class="component-sample component-sample--wide">
           <div class="component-sample__heading"><div><span>01</span><h3>Button</h3></div><code>3 styles · 3 types · 3 states</code></div>
           <div class="component-sample__canvas preview-row">
@@ -208,12 +219,12 @@
 
         <article class="component-sample">
           <div class="component-sample__heading"><div><span>06</span><h3>Tabs & tooltip</h3></div><code>active · inactive · disabled</code></div>
-          <div class="component-sample__canvas navigation-preview"><div role="tablist"><button dsTab [active]="true">Tab</button><button dsTab>Tab</button><button dsTab disabled>Tab</button></div><div class="tooltip-preview"><ds-tooltip text="Tooltip text" position="top" [visible]="true"><button dsButton variant="outline" size="sm">Hover me</button></ds-tooltip></div></div>
+          <div class="component-sample__canvas navigation-preview"><div><div role="tablist" aria-label="Example views"><button dsTab id="demo-overview-tab" panelId="demo-overview-panel" [active]="demoTab() === 'overview'" (click)="demoTab.set('overview')">Overview</button><button dsTab id="demo-activity-tab" panelId="demo-activity-panel" [active]="demoTab() === 'activity'" (click)="demoTab.set('activity')">Activity</button><button dsTab disabled>Settings</button></div><div role="tabpanel" id="demo-overview-panel" aria-labelledby="demo-overview-tab" [hidden]="demoTab() !== 'overview'" tabindex="0">Overview content</div><div role="tabpanel" id="demo-activity-panel" aria-labelledby="demo-activity-tab" [hidden]="demoTab() !== 'activity'" tabindex="0">Activity content</div></div><div class="tooltip-preview"><ds-tooltip text="Tooltip text" position="top" [visible]="true"><button dsButton variant="outline" size="sm">Hover me</button></ds-tooltip></div></div>
         </article>
 
         <article class="component-sample">
           <div class="component-sample__heading"><div><span>07</span><h3>Menu item</h3></div><code>4 states</code></div>
-          <div class="component-sample__canvas menu-preview" role="menu"><button dsMenuItem shortcut="⌘K">Menu item</button><button dsMenuItem shortcut="⌘K" [active]="true">Active item</button><button dsMenuItem shortcut="⌘K" disabled>Disabled item</button></div>
+          <div class="component-sample__canvas menu-preview" role="group" aria-label="Commands"><button dsMenuItem shortcut="⌘K">Menu item</button><button dsMenuItem shortcut="⌘K" [active]="true">Active item</button><button dsMenuItem shortcut="⌘K" disabled>Disabled item</button></div>
         </article>
 
         <article class="component-sample component-sample--wide">
@@ -222,21 +233,18 @@
         </article>
 
         <article class="component-sample component-sample--wide">
-          <div class="component-sample__heading"><div><span>09</span><h3>Search</h3></div><code>bar · docked</code></div>
-          <div class="component-sample__canvas search-preview">
-            <div class="search-preview__bars"><ds-search-bar /><ds-search-bar state="hovered" /><ds-search-bar state="focused" value="Input text" /></div>
-            <div class="search-preview__panels"><ds-search-panel configuration="input" value="Input text" /><ds-search-panel configuration="supporting" /></div>
-          </div>
+          <div class="component-sample__heading"><div><span>09</span><h3>Dropdown</h3></div><code>option list · keyboard selection · disabled · error</code></div>
+          <div class="component-sample__canvas"><ds-dropdown label="Workspace" [options]="workspaceOptions" /><ds-dropdown label="Team" [options]="workspaceOptions" value="design" /><ds-dropdown label="Unavailable team" [options]="workspaceOptions" [disabled]="true" /><ds-dropdown label="Required team" [options]="workspaceOptions" error="Choose a team" /></div>
         </article>
 
         <article class="component-sample component-sample--wide">
           <div class="component-sample__heading"><div><span>10</span><h3>Date picker</h3></div><code>field · calendar · month · year</code></div>
-          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-date-picker /><ds-date-picker value="03 / 24 / 2024" /><ds-date-picker error="Invalid format" /></div><ds-date-calendar /></div>
+          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-date-picker /><ds-date-picker value="03 / 24 / 2024" /><ds-date-picker error="Invalid format" /></div></div>
         </article>
 
         <article class="component-sample component-sample--wide">
           <div class="component-sample__heading"><div><span>11</span><h3>Time picker</h3></div><code>field · dial · input · error</code></div>
-          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-time-picker /><ds-time-picker value="09 : 30" /><ds-time-picker error="Invalid format" /></div><ds-time-clock /></div>
+          <div class="component-sample__canvas picker-preview"><div class="picker-fields"><ds-time-picker /><ds-time-picker value="09 : 30 AM" /><ds-time-picker error="Invalid format" /></div></div>
         </article>
 
         <article class="component-sample component-sample--wide">
@@ -335,8 +343,8 @@
                 <label class="playground-check"><input type="checkbox" [checked]="playgroundSupporting()" (change)="playgroundSupporting.set($any($event.target).checked)" /><span>Supporting text</span></label>
                 <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
               }
-              @case ('search') {
-                <label class="playground-field"><span>State</span><select [value]="playgroundState()" (change)="playgroundState.set($any($event.target).value)"><option value="default">Default</option><option value="hovered">Hovered</option><option value="focused">Focused</option></select></label>
+              @case ('dropdown') {
+                <label class="playground-check"><input type="checkbox" [checked]="playgroundDisabled()" (change)="playgroundDisabled.set($any($event.target).checked)" /><span>Disabled</span></label>
               }
               @case ('toolbar') {
                 <label class="playground-field"><span>Variant</span><select [value]="playgroundVariant()" (change)="playgroundVariant.set($any($event.target).value)"><option value="docked">Docked</option><option value="floating-horizontal">Floating horizontal</option><option value="floating-vertical">Floating vertical</option></select></label>
@@ -357,10 +365,10 @@
                 @case ('switch') { <ds-switch [checked]="playgroundSelected()" [disabled]="playgroundDisabled()" (checkedChange)="playgroundSelected.set($event)">Auto-save</ds-switch> }
                 @case ('radio') { <ds-radio name="playground-model" value="recommended" [checked]="playgroundSelected()" [disabled]="playgroundDisabled()" (checkedChange)="playgroundSelected.set($event)">Recommended</ds-radio> }
                 @case ('input') { <ds-input label="Project name" placeholder="Enter project name" [value]="playgroundState() === 'filled' ? 'AI workspace' : ''" [error]="playgroundState() === 'error' ? 'A project name is required' : ''" [icon]="playgroundIcon() ? 'search' : ''" [disabled]="playgroundDisabled()" /> }
-                @case ('tabs') { <div role="tablist"><button dsTab [active]="playgroundState() !== 'second'" (click)="playgroundState.set('default')">Overview</button><button dsTab [active]="playgroundState() === 'second'" (click)="playgroundState.set('second')">Activity</button><button dsTab [disabled]="playgroundDisabled()">Settings</button></div> }
-                @case ('menu') { <div role="menu"><button dsMenuItem [shortcut]="playgroundSupporting() ? '⌘K' : ''" [active]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())">Open command</button></div> }
+                @case ('tabs') { <div role="tablist" aria-label="Playground views"><button dsTab [active]="playgroundState() !== 'second'" (click)="playgroundState.set('default')">Overview</button><button dsTab [active]="playgroundState() === 'second'" (click)="playgroundState.set('second')">Activity</button><button dsTab [disabled]="playgroundDisabled()">Settings</button></div> }
+                @case ('menu') { <div role="group" aria-label="Commands"><button dsMenuItem [shortcut]="playgroundSupporting() ? '⌘K' : ''" [active]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())">Open command</button></div> }
                 @case ('list') { <button dsListItem title="AI workspace" [supportingText]="playgroundSupporting() ? 'Updated moments ago' : ''" [selected]="playgroundSelected()" [disabled]="playgroundDisabled()" (click)="playgroundSelected.set(!playgroundSelected())"><span avatar></span><span trailing>›</span></button> }
-                @case ('search') { <ds-search-bar [state]="$any(playgroundState())" /> }
+                @case ('dropdown') { <ds-dropdown label="Workspace" [options]="workspaceOptions" [disabled]="playgroundDisabled()" /> }
                 @case ('toolbar') {
                   <ds-toolbar [variant]="$any(playgroundVariant())" [tone]="$any(playgroundState())" [expanded]="playgroundSupporting()">
                     <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon"><use href="#icon-material-format-bold"></use></svg></button>

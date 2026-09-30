@@ -77,7 +77,7 @@
   --surface-overlay: var(--primitive-neutral-0);
   --text-primary: var(--primitive-neutral-950);
   --text-secondary: var(--primitive-neutral-600);
-  --text-tertiary: var(--primitive-neutral-400);
+  --text-tertiary: var(--primitive-neutral-600);
   --text-disabled: var(--primitive-neutral-300);
   --text-inverse: var(--primitive-white);
   --text-link: var(--primitive-secondary-500);
@@ -99,7 +99,7 @@
   --accent-on-accent: var(--primitive-neutral-950);
   --feedback-success: var(--primitive-secondary-600);
   --feedback-success-subtle: var(--primitive-secondary-50);
-  --feedback-warning: var(--primitive-support-gold-500);
+  --feedback-warning: var(--primitive-support-gold-800);
   --feedback-warning-subtle: var(--primitive-support-gold-50);
   --feedback-error: var(--primitive-support-gold-700);
   --feedback-error-subtle: var(--primitive-support-gold-50);
@@ -111,7 +111,7 @@
   --icon-accent: var(--primitive-support-gold-500);
   --border-default: var(--primitive-neutral-200);
   --border-subtle: var(--primitive-support-sand-200);
-  --border-strong: var(--primitive-neutral-400);
+  --border-strong: var(--primitive-neutral-600);
   --border-focus: var(--primitive-primary-500);
   --border-error: var(--primitive-support-gold-700);
   --border-disabled: var(--primitive-neutral-200);
@@ -232,7 +232,7 @@
   --space-16: var(--spacing-64);
   --shadow-sm: 0 1px 2px rgba(13, 18, 15, 0.06), 0 1px 4px rgba(13, 18, 15, 0.04);
   --shadow-md: 0 16px 48px rgba(13, 18, 15, 0.1);
-  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--border-focus), transparent 72%);
+  --focus-ring: 0 0 0 2px var(--surface-default), 0 0 0 4px var(--border-focus);
   --search-surface: var(--primitive-primary-50);
   --search-field: #e8f0ee;
   --search-border: #e5ece9;
@@ -266,7 +266,7 @@
   --action-primary-on-primary: var(--primitive-neutral-950);
   --action-secondary-default: var(--primitive-secondary-400);
   --action-secondary-hover: var(--primitive-secondary-300);
-  --action-secondary-active: var(--primitive-secondary-500);
+  --action-secondary-active: var(--primitive-secondary-400);
   --action-secondary-subtle: var(--primitive-secondary-900);
   --action-secondary-on-secondary: var(--primitive-neutral-950);
   --accent-default: var(--primitive-support-gold-400);

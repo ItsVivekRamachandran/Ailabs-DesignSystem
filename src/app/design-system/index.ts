@@ -8,15 +8,11 @@ export { InputComponent, InputComponent as TextFieldComponent } from './input.co
 export { ListItemComponent } from './list-item.component'
 export { MenuItemComponent } from './menu-item.component'
 export { RadioComponent } from './radio.component'
-export {
-  SearchBarComponent,
-  SearchPanelComponent,
-  type SearchConfiguration,
-  type SearchResult,
-  type SearchState,
-} from './search.component'
+export { DropdownComponent, type DropdownOption } from './dropdown.component'
 export { SwitchComponent } from './switch.component'
 export { TabComponent } from './tab.component'
 export { TimeClockComponent, TimePickerComponent, type ClockMode, type ClockView } from './time-picker.component'
 export { ToolbarComponent, type ToolbarTone, type ToolbarVariant } from './toolbar.component'
 export { TooltipComponent, type TooltipPosition } from './tooltip.component'
+
+export { AlertComponent, type AlertSeverity } from "./alert.component"

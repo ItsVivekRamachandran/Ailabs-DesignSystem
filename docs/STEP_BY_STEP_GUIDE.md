@@ -59,7 +59,7 @@ Command blocks state their working directory. Replace angle-bracket placeholders
 
 The overview copies `npm install ailabs-design-system`; this command alone does not register the required CSS. Follow Section 4. The header GitHub icon is a working link; the hero **View on GitHub** button has no navigation handler in the current source.
 
-The playground offers Button, Chip, Badge, Checkbox, Switch, Radio, Text field, Tabs, Menu item, List item, Search, and Toolbar. Other exported components are described in the technical reference. Copied SVG `<use>` references such as `#icon-sparkles` and `#icon-material-format-bold` refer to symbols defined in the showcase. Supply those symbols or replace them with your own icons in a consuming app.
+The playground offers Button, Chip, Badge, Checkbox, Switch, Radio, Text field, Tabs, Menu item, List item, Dropdown, and Toolbar. Other exported components are described in the technical reference. Copied SVG `<use>` references such as `#icon-sparkles` and `#icon-material-format-bold` refer to symbols defined in the showcase. Supply those symbols or replace them with your own icons in a consuming app.
 
 ## 3. Add the Figma library to your design file
 
@@ -544,14 +544,14 @@ Avoid introducing a different npm CLI version as an incidental side effect of a 
 | Visuals | Light/dark, 1440/900/600/375 px widths | Readable controls, no unintended overflow |
 | Keyboard | Tab, activation, focus visibility | Actions reachable and named |
 | Forms | Input, checkbox, switch, radio group | Parent state matches user actions |
-| Search | Enter, clear, back, voice, result select | Expected outputs handled by consumer |
+| Dropdown | Arrow keys, typeahead, Enter, Escape, outside click | Selects enabled options and dismisses correctly |
 | Playground | All component choices and Copy code | Preview and snippet agree |
 | Theme | Toggle and reload | Theme changes and persists when storage works |
 | Deployment | Pages run and live URL | Correct commit and asset base path |
 | Figma | Library update in a sample consumer file | Intended assets and overrides verified |
 | npm | Install the published version | Fresh consumer build succeeds |
 
-Date Calendar is a fixed March demonstration; month arrows have no navigation logic. Time Clock emits no change events and input mode is not an editable form. Search Panel substitutes demo results for an empty array. Treat these as known limitations, not acceptance criteria for full production widgets.
+Date/Time fields open selection dialogs. Check month navigation, date selection, time Apply/Cancel, keyboard entry, Escape, and focus return. Dropdown supports keyboard selection and disabled options. Search exports have been removed. Typed-value validation and form-model integration remain application responsibilities.
 
 No test or lint scripts exist in the baseline. Builds verify compilation and packaging; they do not establish complete accessibility or behavioral correctness. Add meaningful automated tests as part of production hardening.
 

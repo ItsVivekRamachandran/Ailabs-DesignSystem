@@ -1,0 +1,212 @@
+[
+  {
+    "theme": "light",
+    "fg": "--text-primary",
+    "bg": "--surface-default",
+    "ratio": 18.91,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-secondary",
+    "bg": "--surface-default",
+    "ratio": 6.41,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-tertiary",
+    "bg": "--surface-default",
+    "ratio": 6.41,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-warning",
+    "bg": "--feedback-warning-subtle",
+    "ratio": 6.79,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-error",
+    "bg": "--feedback-error-subtle",
+    "ratio": 4.74,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--feedback-success",
+    "bg": "--feedback-success-subtle",
+    "ratio": 7.32,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--text-brand",
+    "bg": "--background-brand-subtle",
+    "ratio": 10.72,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--border-strong",
+    "bg": "--surface-default",
+    "ratio": 6.41,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--border-focus",
+    "bg": "--surface-default",
+    "ratio": 11.73,
+    "minimum": 3
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-default",
+    "ratio": 11.73,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-hover",
+    "ratio": 13.23,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-active",
+    "ratio": 14.94,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-default",
+    "ratio": 6.26,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-hover",
+    "ratio": 7.83,
+    "minimum": 4.5
+  },
+  {
+    "theme": "light",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-active",
+    "ratio": 9.85,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-primary",
+    "bg": "--surface-default",
+    "ratio": 15.5,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-secondary",
+    "bg": "--surface-default",
+    "ratio": 10.48,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-tertiary",
+    "bg": "--surface-default",
+    "ratio": 6.51,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-warning",
+    "bg": "--feedback-warning-subtle",
+    "ratio": 8.23,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-error",
+    "bg": "--feedback-error-subtle",
+    "ratio": 10.54,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--feedback-success",
+    "bg": "--feedback-success-subtle",
+    "ratio": 7.41,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--text-brand",
+    "bg": "--background-brand-subtle",
+    "ratio": 8.92,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--border-strong",
+    "bg": "--surface-default",
+    "ratio": 3.96,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--border-focus",
+    "bg": "--surface-default",
+    "ratio": 8.02,
+    "minimum": 3
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-default",
+    "ratio": 9.31,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-hover",
+    "ratio": 13.07,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-primary-on-primary",
+    "bg": "--action-primary-active",
+    "ratio": 5.78,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-default",
+    "ratio": 5.78,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-hover",
+    "ratio": 9.31,
+    "minimum": 4.5
+  },
+  {
+    "theme": "dark",
+    "fg": "--action-secondary-on-secondary",
+    "bg": "--action-secondary-active",
+    "ratio": 5.78,
+    "minimum": 4.5
+  }
+]

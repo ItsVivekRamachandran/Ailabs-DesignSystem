@@ -1,22 +1,24 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, computed, signal } from '@angular/core'
 import { colorRamps, radii, semanticColorGroups, spacing, strokes } from '../design-system/tokens'
 import {
+  AlertComponent,
   BadgeComponent,
   ButtonComponent,
   CardComponent,
   CheckboxComponent,
   ChipComponent,
-  DateCalendarComponent,
+
   DatePickerComponent,
+  DropdownComponent,
   InputComponent,
   ListItemComponent,
   MenuItemComponent,
   RadioComponent,
-  SearchBarComponent,
-  SearchPanelComponent,
+
+
   SwitchComponent,
   TabComponent,
-  TimeClockComponent,
+
   TimePickerComponent,
   ToolbarComponent,
   TooltipComponent,
@@ -26,22 +28,24 @@ import {
   selector: 'app-root',
   standalone: true,
   imports: [
-    BadgeComponent,
+    AlertComponent,
+  BadgeComponent,
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
     ChipComponent,
-    DateCalendarComponent,
+
     DatePickerComponent,
+  DropdownComponent,
     InputComponent,
     ListItemComponent,
     MenuItemComponent,
     RadioComponent,
-    SearchBarComponent,
-    SearchPanelComponent,
+
+
     SwitchComponent,
     TabComponent,
-    TimeClockComponent,
+
     TimePickerComponent,
     ToolbarComponent,
     TooltipComponent,
@@ -50,6 +54,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
+  readonly workspaceOptions = [{ value: 'design', label: 'Design' }, { value: 'engineering', label: 'Engineering' }, { value: 'marketing', label: 'Marketing' }, { value: 'archived', label: 'Archived (unavailable)', disabled: true }]
+  readonly alertVisible = signal(true)
+  readonly alertAction = signal('')
+  readonly demoTab = signal('overview')
   readonly theme = signal<'light' | 'dark'>('light')
   readonly themeLabel = computed(() => this.theme() === 'dark' ? 'Dark' : 'Light')
   readonly copied = signal(false)
@@ -66,7 +74,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     { id: 'tabs', label: 'Tabs', description: 'Switch between related views at the same hierarchy.', importName: 'TabComponent' },
     { id: 'menu', label: 'Menu item', description: 'Command rows with active, shortcut, and disabled states.', importName: 'MenuItemComponent' },
     { id: 'list', label: 'List item', description: 'Single or two-line navigation and selection rows.', importName: 'ListItemComponent' },
-    { id: 'search', label: 'Search', description: 'Search entry with clear and submit actions plus interaction states.', importName: 'SearchBarComponent' },
+    { id: 'dropdown', label: 'Dropdown', description: 'Select from a keyboard accessible option list.', importName: 'DropdownComponent' },
     { id: 'toolbar', label: 'Toolbar', description: 'Docked and floating action containers with standard and vibrant treatments.', importName: 'ToolbarComponent' },
   ] as const
   readonly playgroundComponent = signal('button')
@@ -106,8 +114,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         return `<button dsMenuItem${this.playgroundSupporting() ? ' shortcut="⌘K"' : ''}${this.playgroundSelected() ? ' [active]="true"' : ''}${disabled}>Open command</button>`
       case 'list':
         return `<button dsListItem title="AI workspace"${this.playgroundSupporting() ? ' supportingText="Updated moments ago"' : ''}${this.playgroundSelected() ? ' [selected]="true"' : ''}${disabled}>\n  <span avatar></span>\n  <span trailing>›</span>\n</button>`
-      case 'search':
-        return `<ds-search-bar placeholder="Hinted search text" state="${this.playgroundState()}" />`
+      case 'dropdown':
+        return `<ds-dropdown label="Workspace" [options]="workspaceOptions"${this.playgroundDisabled() ? ' [disabled]="true"' : ''} />`
       case 'toolbar':
         return `<ds-toolbar variant="${this.playgroundVariant()}" tone="${this.playgroundState()}"${this.playgroundSupporting() ? '' : ' [expanded]="false"'}>\n  <button dsButton toolbarLeading [iconOnly]="true" aria-label="Bold"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-bold"></use></svg></button>\n  <button dsButton variant="ghost" [iconOnly]="true" aria-label="Italic"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-italic"></use></svg></button>\n  <button dsButton toolbarTrailing variant="ghost" [iconOnly]="true" aria-label="Underline"><svg class="material-icon" aria-hidden="true"><use href="#icon-material-format-underlined"></use></svg></button>\n</ds-toolbar>`
       default:

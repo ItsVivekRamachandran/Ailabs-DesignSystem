@@ -10,6 +10,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
+  @Input() @HostBinding("attr.type") type = "button"
   @Input() variant: ButtonVariant = 'primary'
   @Input() size: ButtonSize = 'md'
   @Input() iconOnly = false
